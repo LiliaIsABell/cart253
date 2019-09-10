@@ -28,7 +28,7 @@ noStroke()
 rectMode(CENTER);
 background(61,224,213,);
 //rect 6
-fill(73, 178, 230,127)
+fill(73, 178, 230,120)
 rect(250,250,400,400);
 //rect 5
 fill(73, 128, 230,127);
