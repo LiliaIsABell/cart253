@@ -15,12 +15,35 @@ let squareX;
 let squareY;
 let squareSize = 100;
 
+// I declare the varialbles for the word HELP
+
+// position and size of H
+let h = "H";
+let hSize = 160;
+let hX = -160;
+let hY = 0;
+// position and size of E
+let e = "E";
+let eSize = 160;
+let eX = -160;
+let eY = 320;
+// position and size of L
+let l = "L";
+let lSize = 160;
+let lX = -160;
+let lY = 480;
+// position and size of P
+let p = "P";
+let pSize = 160;
+let pX = -160;
+let pY = 640;
 
 // preload()
 //
 // Nothing here
 
 function preload() {
+
 
 }
 
@@ -32,6 +55,7 @@ function preload() {
 function setup() {
   // Create our canvas
   createCanvas(640,640);
+
 
   // Start the circle off screen to the bottom left
   // We divide the size by two because we're drawing from the center
@@ -47,6 +71,7 @@ function setup() {
   rectMode(CENTER);
   // We won't have a stroke in this
   noStroke();
+
 }
 
 
@@ -73,4 +98,34 @@ function draw() {
   fill(0,0,255,10);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
+
+  //Moving the word HELP left to right
+  // All the letters are in yellow
+  
+  // letter H
+  hX += 1
+  textAlign(LEFT, TOP);
+  fill (255,255,0);
+  textSize(160);
+  text(h,hX,hY);
+  // letter e
+  eX +=1
+  textAlign(LEFT, BOTTOM);
+  fill (255,255,0);
+  textSize(160);
+  text(e,eX,eY);
+  // letter l
+  lX += 1
+  textAlign(LEFT, BOTTOM);
+  fill (255,255,0);
+  textSize(160);
+  text(l,lX,lY);
+  // letter p
+  pX += 1
+  textAlign(LEFT, BOTTOM);
+  fill (255,255,0);
+  textSize(160);
+  text(p,pX,pY);
+
+
 }
