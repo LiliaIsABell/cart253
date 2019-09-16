@@ -38,12 +38,14 @@ let pSize = 160;
 let pX = -160;
 let pY = 640;
 
-// preload()
-//
-// Nothing here
+// Declaring the variables for the clown images
+// position of the clown image
+let rat;
 
+
+// here is were I loaded the image of the clown
 function preload() {
-
+rat = loadImage ("assets/images/clown.png");
 
 }
 
@@ -81,6 +83,7 @@ function setup() {
 // Draw the circle and square on screen
 
 function draw() {
+
   // We don't fill the background so we get a drawing effect
 
   // Move circle up and to the right
@@ -101,7 +104,7 @@ function draw() {
 
   //Moving the word HELP left to right
   // All the letters are in yellow
-  
+
   // letter H
   hX += 1
   textAlign(LEFT, TOP);
@@ -126,6 +129,14 @@ function draw() {
   fill (255,255,0);
   textSize(160);
   text(p,pX,pY);
+
+  // Making the image of the clown move with the mouse
+  imageMode(CENTER)
+  // mouse is now placed at the center on the image
+  image (rat, mouseX, mouseY,);
+
+
+
 
 
 }
