@@ -15,7 +15,7 @@ let squareX;
 let squareY;
 let squareSize = 100;
 
-// I declare the varialbles for the word HELP
+// Declaring the varialbles for the word HELP
 
 // position and size of H
 let h = "H";
@@ -38,9 +38,14 @@ let pSize = 160;
 let pX = -160;
 let pY = 640;
 
-// Declaring the variables for the clown images
-// position of the clown image
+// Declaring the variable for the clown images
 let rat;
+
+// Declaring the variables for the triangle
+//By doing this I relate all the points of the triangle
+let triX = 160;
+let triY = 640;
+
 
 
 // here is were I loaded the image of the clown
@@ -74,6 +79,7 @@ function setup() {
   // We won't have a stroke in this
   noStroke();
 
+
 }
 
 
@@ -85,6 +91,15 @@ function setup() {
 function draw() {
 
   // We don't fill the background so we get a drawing effect
+
+
+  //the triangle is purple
+  fill(150,0,255);
+  ////Coordinates and size of the triangle
+  triangle (triX+160,triY-320, triX, triY, triX+320, triY);
+  //the triangle is moving form down to up
+  triY -=1
+
 
   // Move circle up and to the right
   circleX += 1;
