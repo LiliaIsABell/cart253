@@ -56,6 +56,15 @@ function draw() {
   // A pink background
   background(255,220,220);
 
+  // A score keeper at the top-left of the canvas
+  // a dark salmon color
+  fill(209,73,73);
+  // Position,size and font
+  textAlign(RIGHT,TOP);
+  textSize(130);
+  textFont("Forte");
+  text(dodges,width* 9/10, height/42);
+
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
   avatarVY = 0;
