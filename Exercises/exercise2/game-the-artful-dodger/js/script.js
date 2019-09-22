@@ -98,6 +98,11 @@ function draw() {
   // Update the enemy's position based on its velocity
   enemyX = enemyX + enemyVX;
 
+  // When the enemy ball leave the canvas, the speed and size increases
+  if (enemyX > width){
+    enemySpeed=enemySpeed+0.3;
+    enemySize=enemySize+5;
+}
   // Check if the enemy and avatar overlap - if they do the player loses
   // We do this by checking if the distance between the centre of the enemy
   // and the centre of the avatar is less that their combined radii
@@ -108,6 +113,10 @@ function draw() {
     enemyX = 0;
     enemyY = random(0,height);
     // Reset the avatar's position
+    // Reset enemy's speed
+    enemySpeed = 5
+    // Reset enemy's size
+    enemySize = 50
     avatarX = width/2;
     avatarY = height/2;
     // Reset the dodge counter
@@ -120,6 +129,10 @@ function draw() {
     console.log("YOU LOSE!");
     enemyX = 0;
     enemyY = random(0,height);
+    // Reset enemy's speed
+    enemySpeed = 5
+    // Reset enemy's size
+    enemySize = 50
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
