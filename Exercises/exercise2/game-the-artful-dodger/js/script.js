@@ -6,7 +6,10 @@ Pippin Barr
 A simple dodging game with keyboard controls
 
 ******************************************************/
-
+// The position and size of the bubbles
+let bubbleX;
+let bubbleY;
+let bubbleSize = 50;
 // The position and size of our avatar circle
 let avatarX;
 let avatarY;
@@ -17,10 +20,11 @@ let avatarSpeed = 10;
 let avatarVX = 0;
 let avatarVY = 0;
 
-// The position and size of the enemy circle
+// The position and size of the enemy oval
 let enemyX;
 let enemyY;
-let enemySize = 50;
+let enemyW = 50;
+let enemyH = 30
 
 // The speed and velocity of our enemy circle
 let enemySpeed = 5;
@@ -56,15 +60,6 @@ function draw() {
   // A pink background
   background(255,220,220);
 
-  // A score keeper at the top-left of the canvas
-  // a dark salmon color
-  fill(209,73,73);
-  // Position,size and font
-  textAlign(RIGHT,TOP);
-  textSize(130);
-  textFont("Forte");
-  text(dodges,width* 9/10, height/42);
-
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
   avatarVY = 0;
@@ -98,25 +93,27 @@ function draw() {
   // Update the enemy's position based on its velocity
   enemyX = enemyX + enemyVX;
 
-  // When the enemy ball leave the canvas, the speed and size increases
+  // When the enemy oval leaves the canvas, the speed and size increases
   if (enemyX > width){
     enemySpeed=enemySpeed+0.3;
-    enemySize=enemySize+5;
+    enemyW = enemyW +2
+    enemyh = enemyH +20
 }
   // Check if the enemy and avatar overlap - if they do the player loses
   // We do this by checking if the distance between the centre of the enemy
   // and the centre of the avatar is less that their combined radii
-  if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
+  if (dist(enemyX,enemyY,avatarX,avatarY) < enemyH/2 + avatarSize/2) {
     // Tell the player they lost
     console.log("YOU LOSE!");
     // Reset the enemy's position
     enemyX = 0;
     enemyY = random(0,height);
-    // Reset the avatar's position
     // Reset enemy's speed
     enemySpeed = 5
     // Reset enemy's size
-    enemySize = 50
+    enemyW = 50
+    enemyH = 30
+    // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
     // Reset the dodge counter
@@ -132,7 +129,8 @@ function draw() {
     // Reset enemy's speed
     enemySpeed = 5
     // Reset enemy's size
-    enemySize = 50
+    enemyW = 50
+    enemyH = 30
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
@@ -148,18 +146,84 @@ function draw() {
     enemyX = 0;
     enemyY = random(0,height);
   }
-
   // Display the number of successful dodges in the console
   console.log(dodges);
+  // In the background, these "bubbles" will increase in size
+  // in a loop
 
-  // The player is black
-  fill(0);
+  // Bubbles increase in size
+  bubbleSize +=1
+
+  // Blue bubbles
+  // Bubble 1
+  stroke(172, 250, 240)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 100
+  bubbleY = 100
+  ellipse(bubbleX,bubbleY,bubbleSize)
+  // Bubble 2
+  stroke(172, 250, 240)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 360
+  bubbleY = 240
+  ellipse(bubbleX,bubbleY,bubbleSize)
+  // Bubble 3
+  stroke(172, 250, 240)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 50
+  bubbleY = 400
+  ellipse(bubbleX,bubbleY,bubbleSize)
+
+  // Purple bubbles
+  // Bubble 4
+  stroke(240, 172, 250)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 250
+  bubbleY = 50
+  ellipse(bubbleX,bubbleY,bubbleSize)
+  // Bubble 5
+  stroke(240, 172, 250)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 120
+  bubbleY = 250
+  ellipse(bubbleX,bubbleY,bubbleSize)
+  // Bubble 6
+  stroke(240, 172, 250)
+  strokeWeight(3)
+  noFill()
+  bubbleX = 400
+  bubbleY = 400
+  ellipse(bubbleX,bubbleY,bubbleSize)
+
+// Loop of the bubbles
+if (bubbleSize > 450){
+  bubbleSize= 50;
+}
+
+  // The player is orange with a red stroke
+  stroke(255, 0, 51)
+  strokeWeight(5)
+  fill(255, 153, 0);
   // Draw the player as a circle
   ellipse(avatarX,avatarY,avatarSize,avatarSize);
 
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
+  noStroke()
+  // The enemy is dark red
+  fill(184, 46, 46);
+  // Draw the enemy as an oval
+  ellipse(enemyX,enemyY,enemyW,enemyH);
 
+  // A score keeper at the top-left of the canvas
+  // It's a dark salmon color
+  fill(209,73,73);
+  // Position,size and font
+  textAlign(RIGHT,TOP);
+  textSize(130);
+  textFont("Forte");
+  text(dodges,width* 9/10, height/42);
 }
