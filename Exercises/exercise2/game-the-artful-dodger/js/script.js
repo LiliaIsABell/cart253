@@ -74,6 +74,23 @@ function draw() {
   else if (keyIsDown(RIGHT_ARROW)) {
     avatarVX = avatarSpeed;
   }
+  // The avatar is invisible until the player pushes the arrow keys
+  // When pressing the left arrow, the avatar is
+  // blue with a green outline
+  if(keyIsDown(LEFT_ARROW)){
+    stroke(0,0, 255);
+    strokeWeight(5);
+    fill(0, 255, 0);
+    ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  }
+  // When pressing the right arrow, the avatar is
+  // green with a blue outline
+  else if (keyIsDown(RIGHT_ARROW)){
+    stroke(0, 255, 0);
+    strokeWeight(5);
+    fill(0, 0, 255);
+    ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  }
 
   // Up and down (separate if-statements so you can move vertically and
   // horizontally at the same time)
@@ -82,6 +99,22 @@ function draw() {
   }
   else if (keyIsDown(DOWN_ARROW)) {
     avatarVY = avatarSpeed;
+  }
+  // When pressing the up arrow, the avatar is
+  // yellow with a red outline
+  if(keyIsDown(UP_ARROW)){
+    stroke(255, 0, 0);
+    strokeWeight(5);
+    fill(255, 255, 0);
+    ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  }
+  // When pressing the down arrow, the avatar is
+  // red with a yellow outline
+  else if (keyIsDown(DOWN_ARROW)){
+    stroke(255, 255, 0);
+    strokeWeight(5);
+    fill(255, 0, 0);
+    ellipse(avatarX,avatarY,avatarSize,avatarSize);
   }
 
   // Move the avatar according to its calculated velocity
@@ -206,9 +239,9 @@ if (bubbleSize > 450){
 }
 
   // The player is orange with a red stroke
-  stroke(255, 0, 51)
-  strokeWeight(5)
-  fill(255, 153, 0);
+  noStroke(255, 0, 51);
+  //strokeWeight(5);
+  //fill(255, 153, 0);
   // Draw the player as a circle
   ellipse(avatarX,avatarY,avatarSize,avatarSize);
 
