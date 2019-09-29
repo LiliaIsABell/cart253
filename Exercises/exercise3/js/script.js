@@ -121,6 +121,28 @@ function setup() {
 // Displays the game over screen if the player has won,
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
+
+  // Creating a sign which will display the sausage dog
+  // grey rectangle
+    fill(245)
+    rect(0,0,200,300);
+  //sausage dog placed in the center
+    image(targetImage,100,150);
+  //text
+  //FIND
+  textFont("Times New Roman");
+  textSize(80);
+  textAlign(LEFT,TOP);
+  fill(0);
+  text("FIND",5,0);
+  //ME!
+  textFont("Times New Roman");
+  textSize(80);
+  textAlign(LEFT,TOP);
+  fill(0);
+  text("ME!",28, 210);
+
+// Game Over
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
