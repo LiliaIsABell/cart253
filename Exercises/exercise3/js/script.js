@@ -17,6 +17,10 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 let targetX;
 let targetY;
 let targetImage;
+//Declared the variables of the dogs velocity
+//to allow the dog to move
+let vX;
+let vY;
 
 // The ten decoy images
 let decoyImage1;
@@ -60,6 +64,10 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
+  //the velocity of the dog
+  vX=5;
+  vY=-5;
+
   createCanvas(windowWidth,windowHeight);
   background("#ffff00");
   imageMode(CENTER);
@@ -145,21 +153,34 @@ function draw() {
 // Game Over
   if (gameOver) {
     // Prepare our typography
+    //the background is blue
+    background(40, 192, 235);
     textFont("Helvetica");
     textSize(128);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
 
-    // Tell them they won!
-    text("YOU WINNED!",width/2,height/2);
+    //I let the player know that they've won nothing
+    text("YOU WIN NOTHING!",width/2,height/2);
 
-    // Draw a circle around the sausage dog to show where it is (even though
-    // they already know because they found it!)
-    noFill();
-    stroke(random(255));
-    strokeWeight(10);
-    ellipse(targetX,targetY,targetImage.width,targetImage.height);
+  //Make the dog bounce from wall to wall
+  if (targetY<0){
+  vY=vY*-1;
+  }
+  if (targetX>width){
+  vX=vX*-1;
+  }
+ if (targetY>height){
+    vY=vY*-1;
+ }
+ if (targetX<0){
+   vX=vX*-1;
+ }
+ //starting point of the dog
+ targetX=targetX+vX;
+ targetY=targetY+vY;
+ image(targetImage,targetX,targetY);
   }
 }
 
