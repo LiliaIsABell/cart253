@@ -39,6 +39,9 @@ let preyRadius = 25;
 let preyVX;
 let preyVY;
 let preyMaxSpeed = 4;
+//Adding variable for Perlin noise
+let preytx=0;
+let preyty=0;
 // Prey health
 let preyHealth;
 let preyMaxHealth = 100;
@@ -225,9 +228,12 @@ function movePrey() {
     //
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-    preyVY = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVX = map(noise(preytx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVY = map(noise(preyty), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
+preytx += 0.01
+preyty += 0.01
+console.log(preytx)
 
   // Update prey position based on velocity
   preyX = preyX + preyVX;
