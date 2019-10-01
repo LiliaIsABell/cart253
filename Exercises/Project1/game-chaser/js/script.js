@@ -40,8 +40,8 @@ let preyVX;
 let preyVY;
 let preyMaxSpeed = 4;
 //Adding variable for Perlin noise
-let preytx=0;
-let preyty=0;
+let preytx = 0;
+let preyty = 0;
 // Prey health
 let preyHealth;
 let preyMaxHealth = 100;
@@ -107,8 +107,7 @@ function draw() {
 
     drawPrey();
     drawPlayer();
-  }
-  else {
+  } else {
     showGameOver();
   }
 }
@@ -120,24 +119,21 @@ function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
     playerVX = -playerMaxSpeed;
-  }
-  else if (keyIsDown(RIGHT_ARROW)) {
+  } else if (keyIsDown(RIGHT_ARROW)) {
     playerVX = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVX = 0;
   }
 
   // Check for vertical movement
   if (keyIsDown(UP_ARROW)) {
     playerVY = -playerMaxSpeed;
-  }
-  else if (keyIsDown(DOWN_ARROW)) {
+  } else if (keyIsDown(DOWN_ARROW)) {
     playerVY = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVY = 0;
   }
+  //
 }
 
 // movePlayer()
@@ -153,8 +149,7 @@ function movePlayer() {
   if (playerX < 0) {
     // Off the left side, so add the width to reset to the right
     playerX = playerX + width;
-  }
-  else if (playerX > width) {
+  } else if (playerX > width) {
     // Off the right side, so subtract the width to reset to the left
     playerX = playerX - width;
   }
@@ -162,8 +157,7 @@ function movePlayer() {
   if (playerY < 0) {
     // Off the top, so add the height to reset to the bottom
     playerY = playerY + height;
-  }
-  else if (playerY > height) {
+  } else if (playerY > height) {
     // Off the bottom, so subtract the height to reset to the top
     playerY = playerY - height;
   }
@@ -226,14 +220,14 @@ function movePrey() {
     // Set velocity based on random values to get a new direction
     // and speed of movement
     //
-    // Use map() to convert from the 0-1 range of the random() function
+    //I changed random() to noise ()
+    //Map()will convert the 0-1 range of the noise function
     // to the appropriate range of velocities for the prey
     preyVX = map(noise(preytx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
     preyVY = map(noise(preyty), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
-preytx += 0.01
-preyty += 0.01
-console.log(preytx)
+  preytx += 0.1
+  preyty += 0.1
 
   // Update prey position based on velocity
   preyX = preyX + preyVX;
@@ -242,15 +236,13 @@ console.log(preytx)
   // Screen wrapping
   if (preyX < 0) {
     preyX = preyX + width;
-  }
-  else if (preyX > width) {
+  } else if (preyX > width) {
     preyX = preyX - width;
   }
 
   if (preyY < 0) {
     preyY = preyY + height;
-  }
-  else if (preyY > height) {
+  } else if (preyY > height) {
     preyY = preyY - height;
   }
 }
