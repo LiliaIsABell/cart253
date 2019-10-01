@@ -133,7 +133,14 @@ function handleInput() {
   } else {
     playerVY = 0;
   }
-  //
+  //When the shift button is pressed, player will sprint
+  if (keyIsDown(SHIFT)){
+    playerMaxSpeed = 4;
+  }
+  //When the sift button is released, player resets
+  else {
+    playerMaxSpeed = 2
+  }
 }
 
 // movePlayer()
