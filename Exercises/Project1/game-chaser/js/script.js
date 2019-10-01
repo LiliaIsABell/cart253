@@ -4,6 +4,7 @@
 
 Game - Chaser
 Pippin Barr
+Modified by Lilia Isabel Aguirre Lugo
 
 A "simple" game of cat and mouse. The player is a circle and can move with keys,
 if they overlap the (randomly moving) prey they "eat it" by sucking out its life
