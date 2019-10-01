@@ -34,9 +34,8 @@ let decoyImage8;
 let decoyImage9;
 let decoyImage10;
 
-// The number of decoys to show on the screen, randomly
-// chosen from the decoy images
-let numDecoys = 100;
+//I increased the number of decoys to appear on screen
+let numDecoys = 130;
 
 // Keep track of whether they've won
 let gameOver = false;
@@ -72,6 +71,11 @@ function setup() {
   background("#ffff00");
   imageMode(CENTER);
 
+  //I draw the dog first so that it is behind the decoys
+  targetX = random(0,width);
+  targetY = random(0,height);
+  image(targetImage,targetX,targetY);
+
   // Use a for loop to draw as many decoys as we need
   for (let i = 0; i < numDecoys; i++) {
     // Choose a random location on the canvas for this decoy
@@ -80,47 +84,46 @@ function setup() {
     // Generate a random number we can use for probability
     let r = random();
     // Use the random number to display one of the ten decoy
-    // images, each with a 10% chance of being shown
-    // We'll talk more about this nice quality of random soon enough.
-    // But basically each "if" and "else if" has a 10% chance of being true
-    if (r < 0.1) {
-      image(decoyImage1,x,y);
+
+    //I want specific images to have a certain probability of appearing
+    //Images with 5% probability
+    //They have lower probability since they look
+    //least like the dog
+    if (r < 0.05) {
+      image(decoyImage5,x,y);
+    }
+    else if (r < 0.1) {
+      image(decoyImage4,x,y);
+    }
+    else if (r < 0.15) {
+      image(decoyImage9,x,y);
     }
     else if (r < 0.2) {
       image(decoyImage2,x,y);
     }
+    //Images with 10% probability
     else if (r < 0.3) {
-      image(decoyImage3,x,y);
+    image(decoyImage8,x,y);
     }
     else if (r < 0.4) {
-      image(decoyImage4,x,y);
+        image(decoyImage3,x,y);
     }
     else if (r < 0.5) {
-      image(decoyImage5,x,y);
+    image(decoyImage10,x,y);
     }
     else if (r < 0.6) {
-      image(decoyImage6,x,y);
-    }
-    else if (r < 0.7) {
-      image(decoyImage7,x,y);
+    image(decoyImage1,x,y);
+    //Images with 20% probability
+    //They have higher probability since it looks
+    //the most like the dog
     }
     else if (r < 0.8) {
-      image(decoyImage8,x,y);
-    }
-    else if (r < 0.9) {
-      image(decoyImage9,x,y);
+    image(decoyImage7,x,y);
     }
     else if (r < 1.0) {
-      image(decoyImage10,x,y);
+      image(decoyImage6,x,y);
     }
   }
-
-  // Once we've displayed all decoys, we choose a random location for the target
-  targetX = random(0,width);
-  targetY = random(0,height);
-
-  // And draw it (because it's the last thing drawn, it will always be on top)
-  image(targetImage,targetX,targetY);
 }
 
 
