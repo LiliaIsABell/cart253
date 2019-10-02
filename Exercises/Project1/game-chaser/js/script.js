@@ -134,7 +134,7 @@ function handleInput() {
     playerVY = 0;
   }
   //When the shift button is pressed, player will sprint
-  if (keyIsDown(SHIFT)){
+  if (keyIsDown(SHIFT)) {
     playerMaxSpeed = 4;
   }
   //When the sift button is released, player resets
@@ -179,6 +179,19 @@ function updateHealth() {
   playerHealth = playerHealth - 0.5;
   // Constrain the result to a sensible range
   playerHealth = constrain(playerHealth, 0, playerMaxHealth);
+
+  //When the shift button is pressed, player's health
+  //will decrease faster, especially without the constrain
+  if (keyIsDown(SHIFT)) {
+    playerHealth = playerHealth - 2;
+  }
+  //When the sift button is released, the health
+  //will decrease at it's normal rate
+  else {
+    playerHealth = playerHealth - 0.5;
+    playerHealth = constrain(playerHealth, 0, playerMaxHealth);
+  }
+
   // Check if the player is dead (0 health)
   if (playerHealth === 0) {
     // If so, the game is over
