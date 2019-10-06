@@ -252,8 +252,10 @@ function movePrey() {
     preyVX = map(noise(preytx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
     preyVY = map(noise(preyty), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
+  // Changed it make the prey move in a less
+  // symetrical way.
   preytx += 0.1
-  preyty += 0.1
+  preyty += 0.5
 
   // Update prey position based on velocity
   preyX = preyX + preyVX;
