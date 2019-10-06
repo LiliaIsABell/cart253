@@ -225,9 +225,12 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten = preyEaten + 1;
-    // Whenever the player eats the prey,
-    // the player will increase in size.
+      // Whenever the player eats the prey,
+      // the player will increase in size.
       playerRadius = playerRadius + 2;
+      // Whenever the player eats the prey,
+      // the prey will move faster.
+      preyMaxSpeed += 2;
     }
   }
 }
