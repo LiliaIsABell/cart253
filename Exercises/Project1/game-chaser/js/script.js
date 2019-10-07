@@ -29,13 +29,17 @@ let playerMaxSpeed = 2;
 // Player health
 let playerHealth;
 let playerMaxHealth = 255;
-// Player fill color
-let playerFill = 50;
+// Player fill color is removed so that
+// the red color can be seen
+
 
 // Prey position, size, velocity
 let preyX;
 let preyY;
-let preyRadius = 25;
+// The prey's radius is now smaller
+// so that the stroke can look bigger
+let preyRadius = 20;
+
 let preyVX;
 let preyVY;
 let preyMaxSpeed = 4;
@@ -45,8 +49,19 @@ let preyty = 0;
 // Prey health
 let preyHealth;
 let preyMaxHealth = 100;
-// Prey fill color
-let preyFill = 200;
+// Prey fill color is removed since
+// it is no longer needed
+
+
+// Tiny fireflies
+let fireflyX;
+let fireflyY;
+let fireflySize = 10;
+let fireVX;
+let fireVY;
+let fireflySpeed = 4;
+let numFlies = 7;
+
 
 // Amount of health obtained per frame of "eating" (overlapping) the prey
 let eatHealth = 10;
@@ -94,7 +109,9 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(100, 100, 200);
+  // The background color is now a dark indigo color to
+  // mimic a night sky
+  background(59, 32, 102);
 
   if (!gameOver) {
     handleInput();
@@ -107,6 +124,7 @@ function draw() {
 
     drawPrey();
     drawPlayer();
+    // drawTinyFireflies();
   } else {
     showGameOver();
   }
@@ -279,7 +297,14 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-  fill(preyFill, preyHealth);
+// The prey is now a firefly
+// Yellow body
+  fill(252, 250, 96);
+// light yellow stroke to give the body a glow
+// It is now the stroke that disappears when being eaten
+// The player sucks out the light
+  stroke(255, 254, 166, preyHealth);
+  strokeWeight(15)
   ellipse(preyX, preyY, preyRadius * 2);
 }
 
@@ -287,9 +312,21 @@ function drawPrey() {
 //
 // Draw the player as an ellipse with alpha value based on health
 function drawPlayer() {
-  fill(playerFill, playerHealth);
+  noStroke()
+//the player is now red to stand out better
+// in the darker background
+  fill(255,0,0, playerHealth);
   ellipse(playerX, playerY, playerRadius * 2);
 }
+
+// function drawTinyFireflies(){
+//   let segmentDrawn = 0;
+//   let x = fireflyX;
+//   while (segmentDrawn < numFlies);
+//   ellipse(x,fireflyY,fireflySize*5)
+//   segmentsDrawn++
+// }
+
 
 // showGameOver()
 //
@@ -298,7 +335,9 @@ function showGameOver() {
   // Set up the font
   textSize(32);
   textAlign(CENTER, CENTER);
-  fill(0);
+  noStroke();
+  // color is light yellow to stand out better
+  fill(255, 254, 166);
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
   gameOverText = gameOverText + "You ate " + preyEaten + " prey\n";
