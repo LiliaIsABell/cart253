@@ -22,15 +22,18 @@ let gameOver = false;
 // Player position, size, velocity
 let playerX;
 let playerY;
-let playerRadius = 25;
+// The player's radius is now smaller
+// so that the stroke can look bigger
+let playerRadius = 20;
 let playerVX = 0;
 let playerVY = 0;
 let playerMaxSpeed = 2;
 // Player health
 let playerHealth;
 let playerMaxHealth = 255;
-// Player fill color is removed so that
-// the red color can be seen
+// Declare a variable for the color green
+// to allow the player to change color
+let firegreen = 0;
 
 
 // Prey position, size, velocity
@@ -249,6 +252,14 @@ function checkEating() {
       // Whenever the player eats the prey,
       // the prey will move faster.
       preyMaxSpeed += 2;
+      // Each time the player eats a firefly,
+      // the color green will be added to the player's
+      // color to become more and more orange
+      firegreen += 25;
+      // Constrain stops the color to reaching black and
+      // stick to yellow
+      firegreen = constrain(firegreen, 0, 255);
+
     }
   }
 }
@@ -297,12 +308,12 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-// The prey is now a firefly
-// Yellow body
+  // The prey is now a firefly
+  // Yellow body
   fill(252, 250, 96);
-// light yellow stroke to give the body a glow
-// It is now the stroke that disappears when being eaten
-// The player sucks out the light
+  // light yellow stroke to give the body a glow
+  // It is now the stroke that disappears when being eaten
+  // The player sucks out the light
   stroke(255, 254, 166, preyHealth);
   strokeWeight(15)
   ellipse(preyX, preyY, preyRadius * 2);
@@ -312,10 +323,14 @@ function drawPrey() {
 //
 // Draw the player as an ellipse with alpha value based on health
 function drawPlayer() {
-  noStroke()
-//the player is now red to stand out better
-// in the darker background
-  fill(255,0,0, playerHealth);
+  // The red stroke mimics a glow
+  // The stroke will determine the player's health
+  stroke(255, 0, 0, playerHealth)
+  strokeWeight(20);
+  //the player will start red but becomes more and more
+  // orange whenever it eats a firefly
+  // Thanks to the firegreen variable
+  fill(255, firegreen, 0);
   ellipse(playerX, playerY, playerRadius * 2);
 }
 
