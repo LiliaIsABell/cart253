@@ -56,14 +56,15 @@ let preyMaxHealth = 100;
 // it is no longer needed
 
 
-// Tiny fireflies
-let fireflyX;
-let fireflyY;
+// Declare variables for the tiny fireflies
+// They are simply there for decoration
+// Position
+let fireflyX = 50;
+let fireflyY = 50;
+// Size
 let fireflySize = 10;
-let fireVX;
-let fireVY;
-let fireflySpeed = 4;
-let numFlies = 7;
+// Maximum number of flies
+let numFlies = 5;
 
 
 // Amount of health obtained per frame of "eating" (overlapping) the prey
@@ -126,8 +127,11 @@ function draw() {
     checkEating();
 
     drawPrey();
+
+    // Add a fuction for the tiny fireflies
+    drawTinyFireflies();
+
     drawPlayer();
-    // drawTinyFireflies();
   } else {
     showGameOver();
   }
@@ -333,20 +337,34 @@ function drawPlayer() {
   fill(255, firegreen, 0);
   ellipse(playerX, playerY, playerRadius * 2);
 }
-
-// function drawTinyFireflies(){
-//   let segmentDrawn = 0;
-//   let x = fireflyX;
-//   while (segmentDrawn < numFlies);
-//   ellipse(x,fireflyY,fireflySize*5)
-//   segmentsDrawn++
-// }
+// Here we draw the tiny fireflies
+// They are only there as part of the background
+function drawTinyFireflies() {
+  let segmentDrawn = 0;
+  // The number of flies will loop until numFlies
+  // They are going to be placed at random places
+  // to give illusion of movement
+  while (segmentDrawn < numFlies) {
+    fireflyX = random(0, width);
+    fireflyY = random(0, height);
+    // Strake and stroke weight of the tiny fireflies
+    stroke(255, 254, 166, preyHealth)
+    strokeWeight(15)
+    // Position and Size
+    ellipse(fireflyX, fireflyY, fireflySize)
+    // Segments are being drawn
+    segmentDrawn++
+  }
+}
 
 
 // showGameOver()
 //
 // Display text about the game being over!
 function showGameOver() {
+  // drwaTinyFireflies is here to keep the fireflies during
+  // game over
+  drawTinyFireflies();
   // Set up the font
   textSize(32);
   textAlign(CENTER, CENTER);
