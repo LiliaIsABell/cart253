@@ -80,9 +80,9 @@ let eatenSound
 // Added preload fuction
 function preload() {
   // Loading the background sound
-  nightSound = loadSound("assets/sounds/bark.wav");
+  nightSound = loadSound("assets/sounds/Night.wav");
   // Loading the eaten sound
-  eatenSound = loadSound("assets/sounds/bark.wav");
+  eatenSound = loadSound("assets/sounds/Blop.wav");
 }
 
 // setup()
