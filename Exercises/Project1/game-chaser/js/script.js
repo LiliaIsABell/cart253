@@ -19,6 +19,7 @@ random movement, screen wrap.
 // Track whether the game is over
 let gameOver = false;
 
+//The player is a red firefly
 // Player position, size, velocity
 let playerX;
 let playerY;
@@ -35,11 +36,11 @@ let playerMaxHealth = 255;
 // to allow the player to change color
 let firegreen = 0;
 
-
-// Prey position, size, velocity
+// The prey is a firefly
+// Prey-firefly position, size, velocity
 let preyX;
 let preyY;
-// The prey's radius is now smaller
+// The prey-firefly's radius is now smaller
 // so that the stroke can look bigger
 let preyRadius = 20;
 
@@ -49,11 +50,9 @@ let preyMaxSpeed = 4;
 //Adding variable for Perlin noise
 let preytx = 0;
 let preyty = 0;
-// Prey health
+// Prey-firefly health
 let preyHealth;
 let preyMaxHealth = 100;
-// Prey fill color is removed since
-// it is no longer needed
 
 
 // Declare variables for the tiny fireflies
@@ -67,13 +66,15 @@ let fireflySize = 10;
 let numFlies = 5;
 
 
-// Amount of health obtained per frame of "eating" (overlapping) the prey
+// Amount of health obtained per frame of "eating" (overlapping) the prey-firefly
 let eatHealth = 10;
-// Number of prey eaten during the game (the "score")
+// Number of prey-firefly eaten during the game (the "score")
 let preyEaten = 0;
+
+
 // Declared variable for background sound
 let nightSound;
-// Declare variable for the sound when firefly is eaten
+// Declare variable for the sound when prey-firefly is eaten
 let eatenSound
 
 // Added preload fuction
@@ -106,7 +107,7 @@ function setup() {
 
 // setupPrey()
 //
-// Initialises prey's position, velocity, and health
+// Initialises prey-firefly's position, velocity, and health
 function setupPrey() {
   preyX = width / 5;
   preyY = height / 2;
@@ -127,7 +128,7 @@ function setupPlayer() {
 // draw()
 //
 // While the game is active, checks input
-// updates positions of prey and player,
+// updates positions of prey-firefly and player,
 // checks health (dying), checks eating (overlaps)
 // displays the two agents.
 // When the game is over, shows the game over screen.
@@ -245,9 +246,9 @@ function updateHealth() {
 
 // checkEating()
 //
-// Check if the player overlaps the prey and updates health of both
+// Check if the player overlaps the prey-firefly and updates health of both
 function checkEating() {
-  // Get distance of player to prey
+  // Get distance of player to prey-firefly
   let d = dist(playerX, playerY, preyX, preyY);
   // Check if it's an overlap
   if (d < playerRadius + preyRadius) {
@@ -255,25 +256,25 @@ function checkEating() {
     playerHealth = playerHealth + eatHealth;
     // Constrain to the possible range
     playerHealth = constrain(playerHealth, 0, playerMaxHealth);
-    // Reduce the prey health
+    // Reduce the prey-firefly health
     preyHealth = preyHealth - eatHealth;
     // Constrain to the possible range
     preyHealth = constrain(preyHealth, 0, preyMaxHealth);
 
-    // Check if the prey died (health 0)
+    // Check if the prey-firefly died (health 0)
     if (preyHealth === 0) {
-      // Move the "new" prey to a random position
+      // Move the "new" prey-firefly to a random position
       preyX = random(0, width);
       preyY = random(0, height);
       // Give it full health
       preyHealth = preyMaxHealth;
-      // Track how many prey were eaten
+      // Track how many prey-firefly were eaten
       preyEaten = preyEaten + 1;
-      // Whenever the player eats the prey,
+      // Whenever the player eats the prey-firefly,
       // the player will increase in size.
       playerRadius = playerRadius + 2;
-      // Whenever the player eats the prey,
-      // the prey will move faster.
+      // Whenever the player eats the prey-firefly,
+      // the firefly will move faster.
       preyMaxSpeed += 2;
       // Each time the player eats a firefly,
       // the color green will be added to the player's
@@ -282,7 +283,7 @@ function checkEating() {
       // Constrain stops the color to reaching black and
       // stick to yellow
       firegreen = constrain(firegreen, 0, 255);
-      // A pop sound happens whenever the firefly is eaten
+      // A pop sound happens whenever the prey-firefly is eaten
       eatenSound.play();
     }
   }
@@ -292,8 +293,8 @@ function checkEating() {
 //
 // Moves the prey based on random velocity changes
 function movePrey() {
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
+  // Change the prey-firefly's velocity at random intervals
+  // random() will be < 0.05 5% of the time, so the prey-firefly
   // will change direction on 5% of frames
   if (random() < 0.05) {
     // Set velocity based on random values to get a new direction
@@ -301,16 +302,16 @@ function movePrey() {
     //
     //I changed random() to noise ()
     //Map()will convert the 0-1 range of the noise function
-    // to the appropriate range of velocities for the prey
+    // to the appropriate range of velocities for the prey-firefly
     preyVX = map(noise(preytx), 0, 1, -preyMaxSpeed, preyMaxSpeed);
     preyVY = map(noise(preyty), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
-  // Changed it make the prey move in a less
+  // Changed it make the prey-firefly move in a less
   // symetrical way.
   preytx += 0.1
   preyty += 0.5
 
-  // Update prey position based on velocity
+  // Update prey-firefly position based on velocity
   preyX = preyX + preyVX;
   preyY = preyY + preyVY;
 
@@ -330,10 +331,10 @@ function movePrey() {
 
 // drawPrey()
 //
-// Draw the prey as an ellipse with alpha based on health
+// Draw the prey-firefly as an ellipse with alpha based on health
 function drawPrey() {
-  // The prey is now a firefly
-  // Yellow body
+  // The prey is now a firefly with
+  //  a yellow body
   fill(252, 250, 96);
   // light yellow stroke to give the body a glow
   // It is now the stroke that disappears when being eaten
@@ -386,6 +387,7 @@ function showGameOver() {
   // game over
   drawTinyFireflies();
   // Set up the font
+  textFont("LUCUDIA BRIGHT");
   textSize(32);
   textAlign(CENTER, CENTER);
   noStroke();
@@ -393,7 +395,7 @@ function showGameOver() {
   fill(255, 254, 166);
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
-  gameOverText = gameOverText + "You ate " + preyEaten + " prey\n";
+  gameOverText = gameOverText + "You ate " + preyEaten + " fireflies\n";
   gameOverText = gameOverText + "before you died."
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
