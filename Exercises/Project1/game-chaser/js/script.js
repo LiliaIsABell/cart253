@@ -388,7 +388,7 @@ function drawTinyFireflies() {
     fireflyX = random(0, width);
     fireflyY = random(0, height);
     // Strake and stroke weight of the tiny fireflies
-    stroke(255, 254, 166, preyHealth)
+    stroke(255, 254, 166, preyHealth);
     strokeWeight(15)
     // Position and Size
     ellipse(fireflyX, fireflyY, fireflySize)
