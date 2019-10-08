@@ -80,14 +80,10 @@ let eatenSound
 // Added preload fuction
 function preload() {
   // Loading the background sound
-  nightSound = loadSound("assets/sounds/Night.wav");
+  nightSound = loadSound("assets/sounds/bark.wav");
   // Loading the eaten sound
-  eatenSound = loadSound("assets/sounds/Blop.wav");
+  eatenSound = loadSound("assets/sounds/bark.wav");
 }
-
-
-
-
 
 // setup()
 //
@@ -156,7 +152,7 @@ function draw() {
     drawPlayer();
   } else {
     showGameOver();
-    // Added function to check on the reset 
+    // Added function to check on the reset
     checkResetGame();
   }
 }
