@@ -156,6 +156,8 @@ function draw() {
     drawPlayer();
   } else {
     showGameOver();
+    // Added function to check on the reset 
+    checkResetGame();
   }
 }
 
@@ -420,13 +422,14 @@ function showGameOver() {
   gameOverText = gameOverText + "before you died.\n\n"
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
-  
+
   // Added text to tell player how to try again
   textSize(20)
   text("Press the SPACEBAR to TRY AGAIN", 250, 400);
 
-
-
+}
+// Fuction for chectResetGame
+function checkResetGame() {
   // Game will reset when the spacebar is pressed
   if (keyIsDown(32)) {
     resetGame();
