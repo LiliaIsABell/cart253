@@ -71,12 +71,29 @@ let numFlies = 5;
 let eatHealth = 10;
 // Number of prey eaten during the game (the "score")
 let preyEaten = 0;
+// Declared variable for background sound
+let nightSound;
+//let eatenSound
+
+// Added preload fuction
+function preload(){
+// Loading the background sound
+  nightSound = loadSound("assets/sounds/Night.wav");
+//  eatenSound = loadSound("assets/sounds/Blop.wav");
+}
+
+
+
+
 
 // setup()
 //
 // Sets up the basic elements of the game
 function setup() {
   createCanvas(500, 500);
+// Play the background sound
+// Will keep playing for it's entire lenght (around 2 mins)
+nightSound.play();
 
   noStroke();
 
@@ -263,7 +280,8 @@ function checkEating() {
       // Constrain stops the color to reaching black and
       // stick to yellow
       firegreen = constrain(firegreen, 0, 255);
-
+      // A sound happens whenever the firefly is eaten
+    //  eaten.play();
     }
   }
 }
