@@ -103,6 +103,8 @@ function setup() {
   // We're using simple functions to separate code out
   setupPrey();
   setupPlayer();
+  // Add function for reset game
+  resetGame();
 }
 
 // setupPrey()
@@ -188,6 +190,25 @@ function handleInput() {
   }
 }
 
+// When spacebar is pressed, game will reset
+function resetGame() {
+  // Position of prey and player will reset
+  setupPrey();
+  setupPlayer();
+  // movement and speed of prey will reset
+  movePrey();
+  // sound will replay
+  nightSound.play();
+  // Size and color of player will reset
+  playerRadius = 20;
+  firegreen = 0;
+  // score will reset
+  preyEaten = 0;
+  // prey speed will reset
+  preyMaxSpeed = 4
+  // All of this when game is over
+  gameOver = false;
+}
 // movePlayer()
 //
 // Updates player position based on velocity,
@@ -396,7 +417,18 @@ function showGameOver() {
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
   gameOverText = gameOverText + "You ate " + preyEaten + " fireflies\n";
-  gameOverText = gameOverText + "before you died."
+  gameOverText = gameOverText + "before you died.\n\n"
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
+  
+  // Added text to tell player how to try again
+  textSize(20)
+  text("Press the SPACEBAR to TRY AGAIN", 250, 400);
+
+
+
+  // Game will reset when the spacebar is pressed
+  if (keyIsDown(32)) {
+    resetGame();
+  }
 }
