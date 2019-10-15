@@ -2,7 +2,9 @@
 
 // Pong
 // by Pippin Barr
-//
+
+// Modified by Lilia Isabel Aguirre Lugo
+
 // A "simple" implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
 //
@@ -32,7 +34,7 @@ let ball = {
 // PADDLES
 
 // Basic definition of a left paddle object with its key properties of
-// position, size, velocity, and speed
+// position, size, velocity,speed and score
 let leftPaddle = {
   x: 0,
   y: 0,
@@ -41,13 +43,15 @@ let leftPaddle = {
   vy: 0,
   speed: 5,
   upKey: 87,
-  downKey: 83
+  downKey: 83,
+  // Added key property for the score
+  leftScore: 0
 }
 
 // RIGHT PADDLE
 
 // Basic definition of a left paddle object with its key properties of
-// position, size, velocity, and speed
+// position, size, velocity, speed and score
 let rightPaddle = {
   x: 0,
   y: 0,
@@ -56,7 +60,9 @@ let rightPaddle = {
   vy: 0,
   speed: 5,
   upKey: 38,
-  downKey: 40
+  downKey: 40,
+  // Added key property for the score
+  rightScore: 0
 }
 
 // A variable to hold the beep sound we will play on bouncing
@@ -123,12 +129,18 @@ function draw() {
     // inside a conditional!)
     if (ballIsOutOfBounds()) {
       // If it went off either side, reset it
+
+      scoreKeeper();
+      // Declared scoreKeeper in ballIsOutOfBounds since
+      //both functions are related, but before resetBall
+      // so that the score does not get reset.
+
       resetBall();
       // This is where we would likely count points, depending on which side
       // the ball went off...
     }
-  }
-  else {
+
+  } else {
     // Otherwise we display the message to start the game
     displayStartMessage();
   }
@@ -154,8 +166,7 @@ function handleInput(paddle) {
   else if (keyIsDown(paddle.downKey)) {
     // Move down
     paddle.vy = paddle.speed;
-  }
-  else {
+  } else {
     // Otherwise stop moving
     paddle.vy = 0;
   }
@@ -186,11 +197,30 @@ function ballIsOutOfBounds() {
   // Check for ball going off the sides
   if (ball.x < 0 || ball.x > width) {
     return true;
-  }
-  else {
+  } else {
     return false;
   }
 }
+
+// Declare the fuction for scoreKeeper
+function scoreKeeper() {
+  // When ball crosses the left border,
+  // rightPaddle gets a point and the background turns black
+  if (ball.x < 0) {
+    rightPaddle.rightScore = rightPaddle.rightScore + 1;
+    bgColor = 0
+  }
+  // When ball crosses the right border,
+  // leftPaddle gets a point and the background turns grey
+  else if (ball.x > width) {
+    leftPaddle.leftScore = leftPaddle.leftScore + 1;
+    bgColor = 200
+  }
+  // console.log allows to see how much each side scored in Console
+  console.log(leftPaddle.leftScore + "POINT LEFT");
+  console.log(rightPaddle.rightScore + "POINT RIGHT");
+}
+
 
 // checkBallWallCollision()
 //
