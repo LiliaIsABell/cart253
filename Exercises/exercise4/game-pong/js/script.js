@@ -14,9 +14,12 @@
 // Whether the game has started
 let playing = false;
 
-// Game colors (using hexadecimal)
-let bgColor = 0;
+// Game colors
+// bgColor is removed since it is no longer needed
 let fgColor = 255;
+// variables to change background color
+let turnYellow = 0;
+let turnBlue = 0;
 
 // BALL
 
@@ -109,8 +112,10 @@ function setupPaddles() {
 // Calls the appropriate functions to run the game
 // See how tidy it looks?!
 function draw() {
-  // Fill the background
-  background(bgColor);
+  // The background is green
+  // The color variables are placed here to allow the
+  // colors to change
+  background (turnYellow,255,turnBlue);
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -205,23 +210,36 @@ function ballIsOutOfBounds() {
 // Declare the fuction for scoreKeeper
 function scoreKeeper() {
   // When ball crosses the left border,
-  // rightPaddle gets a point and the background turns black
+  // rightPaddle gets a point
   if (ball.x < 0) {
     rightPaddle.rightScore = rightPaddle.rightScore + 1;
-    bgColor = 0
+
+  // To show that rightPaddle is scoring,
+  // The background returns to green
+    turnBlue = 0;
+  // The background increasingly turns yellow
+    turnYellow += 50;
+  // constrain makes sure that 255 is the color's maximum
+    turnYellow = constrain(turnYellow,0,255);
   }
   // When ball crosses the right border,
-  // leftPaddle gets a point and the background turns grey
+  // leftPaddle gets a point
   else if (ball.x > width) {
     leftPaddle.leftScore = leftPaddle.leftScore + 1;
-    bgColor = 200
+
+    // To show that rightPaddle is scoring,
+    // The background returns to green
+    turnYellow = 0;
+    // The background increasingly turns blue
+    turnBlue += 50;
+    // constrain makes sure that 255 is the color's maximum
+    turnBlue = constrain(turnBlue,0,255);
+
   }
   // console.log allows to see how much each side scored in Console
   console.log(leftPaddle.leftScore + "POINT LEFT");
   console.log(rightPaddle.rightScore + "POINT RIGHT");
 }
-
-
 // checkBallWallCollision()
 //
 // Check if the ball has hit the top or bottom of the canvas
