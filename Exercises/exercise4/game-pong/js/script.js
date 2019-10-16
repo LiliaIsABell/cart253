@@ -115,7 +115,7 @@ function draw() {
   // The background is green
   // The color variables are placed here to allow the
   // colors to change
-  background (turnYellow,255,turnBlue);
+  background(turnYellow, 255, turnBlue);
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -133,7 +133,7 @@ function draw() {
     // (Note how we can use a function that returns a truth value
     // inside a conditional!)
     if (ballIsOutOfBounds()) {
-      // If it went off either side, reset it
+
 
       scoreKeeper();
       // Declared scoreKeeper in ballIsOutOfBounds since
@@ -141,8 +141,7 @@ function draw() {
       // so that the score does not get reset.
 
       resetBall();
-      // This is where we would likely count points, depending on which side
-      // the ball went off...
+      // If it went off either side, reset it
     }
 
   } else {
@@ -214,13 +213,13 @@ function scoreKeeper() {
   if (ball.x < 0) {
     rightPaddle.rightScore = rightPaddle.rightScore + 1;
 
-  // To show that rightPaddle is scoring,
-  // The background returns to green
+    // To show that rightPaddle is scoring,
+    // The background returns to green
     turnBlue = 0;
-  // The background increasingly turns yellow
+    // The background increasingly turns yellow
     turnYellow += 50;
-  // constrain makes sure that 255 is the color's maximum
-    turnYellow = constrain(turnYellow,0,255);
+    // constrain makes sure that 255 is the color's maximum
+    turnYellow = constrain(turnYellow, 0, 255);
   }
   // When ball crosses the right border,
   // leftPaddle gets a point
@@ -233,7 +232,7 @@ function scoreKeeper() {
     // The background increasingly turns blue
     turnBlue += 50;
     // constrain makes sure that 255 is the color's maximum
-    turnBlue = constrain(turnBlue,0,255);
+    turnBlue = constrain(turnBlue, 0, 255);
 
   }
   // console.log allows to see how much each side scored in Console
@@ -312,7 +311,9 @@ function resetBall() {
   ball.x = width / 2;
   ball.y = height / 2;
   ball.vx = ball.speed;
-  ball.vy = ball.speed;
+  // ball.vy has a random velocity
+  // to make the ball start in a more unpredictable way.
+  ball.vy = random(ball.speed, 10);
 }
 
 // displayStartMessage()
