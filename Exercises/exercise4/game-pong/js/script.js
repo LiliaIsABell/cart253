@@ -71,11 +71,15 @@ let rightPaddle = {
 // A variable to hold the beep sound we will play on bouncing
 let beepSFX;
 
+// Added variable for the chime sound when someone scores
+let scorePoint;
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
+  // Load the chime audio for the points sound
+  scorePoint = new Audio("assets/sounds/Chime.wav");
 }
 
 // setup()
@@ -220,6 +224,9 @@ function scoreKeeper() {
     turnYellow += 50;
     // constrain makes sure that 255 is the color's maximum
     turnYellow = constrain(turnYellow, 0, 255);
+    // Sound plays whenever rightPaddle scores
+    scorePoint.currentTime = 0;
+    scorePoint.play();
   }
   // When ball crosses the right border,
   // leftPaddle gets a point
@@ -233,7 +240,9 @@ function scoreKeeper() {
     turnBlue += 50;
     // constrain makes sure that 255 is the color's maximum
     turnBlue = constrain(turnBlue, 0, 255);
-
+    // Sound plays whenever leftPaddle scores
+    scorePoint.currentTime = 0;
+    scorePoint.play();
   }
   // console.log allows to see how much each side scored in Console
   console.log(leftPaddle.leftScore + "POINT LEFT");
