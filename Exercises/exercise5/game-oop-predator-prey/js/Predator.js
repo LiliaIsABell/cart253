@@ -11,8 +11,9 @@ class Predator {
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
   //
-  // Added arguments for the input properties
-  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey) {
+  // Added arguments for the input properties, preys eaten and score
+  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey,
+    preyEaten, scoreX, scoreY) {
     // Position
     this.x = x;
     this.y = y;
@@ -34,8 +35,12 @@ class Predator {
     this.downKey = downKey;
     this.leftKey = leftKey;
     this.rightKey = rightKey;
+    // Preys eaten
+    this.preyEaten = preyEaten;
+    // Position of score keeper
+    this.scoreX = scoreX;
+    this.scoreY = scoreY;
   }
-
   // handleInput
   //
   // Checks if an arrow key is pressed and sets the predator's
@@ -112,6 +117,8 @@ class Predator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+        // The preys get counted when eaten
+        this.preyEaten += 1;
       }
     }
   }
@@ -127,5 +134,16 @@ class Predator {
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
+    // Draw a score keeper
+    push();
+    fill(255);
+    textAlign(LEFT, TOP);
+    textSize(50);
+    // this.preyEaten will display how many each predator has eaten
+    // this.scoreX and this.scoreY allows to placed the score keeper
+    // in different places
+    text("Preys Eaten: " + this.preyEaten, this.scoreX, this.scoreY);
+    pop();
+
   }
 }

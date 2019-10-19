@@ -17,19 +17,24 @@ let jaguar;
 let antelope;
 let zebra;
 let bee;
-
 // setup()
 //
 // Sets up a canvas
 // Creates objects for the predators and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // Added the input properties
-  tiger = new Predator(100, 100, 5, color(200, 200, 0), 40,
-    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW);
+  // Each predator has different
+  // color, input properties, score keeper and placement
+
+  // the score keepers are places allong side the predator to
+  // distinguished which belongs to who
+  tiger = new Predator(200, 150, 5, color(200, 200, 0), 40,
+    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 0, 20, 40);
   // Added values to puma and jaguar
-  puma = new Predator(400, 400, 5, color(200, 0, 200), 40, 87, 83, 65, 68);
-  jaguar = new Predator(400, 100, 5, color(0, 200, 200), 40, 101, 98, 97, 99);
+  puma = new Predator(windowWidth / 2, 600, 5, color(200, 0, 200), 40,
+    87, 83, 65, 68, 0, windowWidth / 9 * 3.5, 650);
+  jaguar = new Predator(1300, 150, 5, color(0, 200, 200), 40,
+    73, 75, 74, 76, 0, 1180, 40);
 
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
