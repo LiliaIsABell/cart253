@@ -136,7 +136,9 @@ class Predator {
     pop();
     // Draw a score keeper
     push();
-    fill(255);
+    // The text will match the color of it's
+    // designated predator
+    fill(this.fillColor);
     textAlign(LEFT, TOP);
     textSize(50);
     // this.preyEaten will display how many each predator has eaten
