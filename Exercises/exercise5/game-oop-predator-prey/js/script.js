@@ -38,15 +38,15 @@ function setup() {
 
   // the score keepers are places allong side the predator to
   // distinguished which belongs to who
-  shark = new Predator(200, 150, 5, color(120), 40,
-    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 0, 20, 40, 16);
+  shark = new Predator(200, 150, color(120), 40,
+    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 0, 20, 40, SHIFT);
   // Added values to jelly and octopus
-  jelly = new Predator(windowWidth / 2, 600, 5, color(0, 24, 179), 40,
-    87, 83, 65, 68, 0, windowWidth / 9 * 3.5, 650, 49);
-  octopus = new Predator(1300, 150, 5, color(161, 0, 51), 40,
-    73, 75, 74, 76, 0, 1180, 40, 48);
+  jelly = new Predator(windowWidth / 2, 600, color(0, 24, 179), 40,
+    87, 83, 65, 68, 0, windowWidth / 9 * 3.5, 650, 70);
+  octopus = new Predator(1300, 150, color(161, 0, 51), 40,
+    73, 75, 74, 76, 0, 1180, 40, 72);
 
-  // The preys start from the center 
+  // The preys start from the center
   turtle = new Prey(windowWidth / 2, windowHeight / 2, 10, color(13, 153, 0), 50);
   fish = new Prey(windowWidth / 2, windowHeight / 2, 8, color(252, 202, 83), 60);
   shrimp = new Prey(windowWidth / 2, windowHeight / 2, 20, color(255, 150, 171), 10);
