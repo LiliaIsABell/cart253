@@ -160,6 +160,5 @@ class Predator {
     // in different places
     text("Preys Eaten: " + this.preyEaten, this.scoreX, this.scoreY);
     pop();
-
   }
 }

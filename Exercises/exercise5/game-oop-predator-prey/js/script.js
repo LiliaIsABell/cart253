@@ -40,9 +40,12 @@ function setup() {
   // distinguished which belongs to who
   shark = new Predator(200, 150, color(120), 40,
     UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 0, 20, 40, SHIFT);
-  // Added values to jelly and octopus
+  // To move the jelly, the player must press : W(up),S(down),A(left),D(right)
+  // to sprint, press F
   jelly = new Predator(windowWidth / 2, 600, color(0, 24, 179), 40,
     87, 83, 65, 68, 0, windowWidth / 9 * 3.5, 650, 70);
+  // To move the octopus, the player must press : I(up),K(down),J(left),L(right)
+  // to sprint, press H
   octopus = new Predator(1300, 150, color(161, 0, 51), 40,
     73, 75, 74, 76, 0, 1180, 40, 72);
 
