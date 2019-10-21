@@ -19,6 +19,9 @@ let turtle;
 let fish;
 let shrimp;
 
+// Declare a variable for whether or not the game is playing
+let playing = false;
+
 // Added preload function
 function preload() {
   // Loaded underwater image
@@ -59,6 +62,18 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
+
+// If the game is not being played,
+// there will be a title screen present
+  if (playing === false){
+  // Added function for title screen
+    titleScreen();
+  }
+
+// If the game is being played,
+// then the preys and predators will be active
+  else {
+
   // the background is now blue that looks like water
   background(underwater);
 
@@ -98,4 +113,77 @@ function draw() {
   turtle.display();
   fish.display();
   shrimp.display();
+}
+}
+
+// function for title screen
+function titleScreen() {
+
+background (underwater);
+
+// Text
+  fill(255);
+  textAlign(CENTER,TOP);
+  textSize (50);
+  text("Instructions",windowWidth/2, 50);
+  text("Click to play",windowWidth/2,windowHeight/3*2.5);
+
+// Here is where the mechanics for the predators are explained
+//
+// Shark
+//
+// Avatar
+  noStroke();
+  fill(120);
+  ellipse(100,180,100);
+// Instructions
+  textSize(30);
+  text("Move with : ARROW KEYS", 370, 150);
+  text("Sprint with : SHIFT", 315, 190);
+
+// Jelly
+//
+// Avatar
+  noStroke();
+  fill(0, 24, 179);
+  ellipse(100,360,100);
+// Instructions
+textSize(30);
+text("Move with : A  W  S  D", 345, 330);
+text("Sprint with : F", 285, 370);
+
+// Octopus
+// Avatar
+  noStroke();
+  fill(161, 0, 51);
+  ellipse(100,540,100);
+// Instructions
+textSize(30);
+text("Move with : J  I  K  L", 330, 510);
+text("Sprint with : H", 285, 550);
+
+
+// Here is where the goal of the game is presented
+//
+// Prey figures
+fill(13, 153, 0);
+ellipse(1100,400,140);
+
+fill(252, 202, 83);
+ellipse(1200,250,120);
+
+fill(255, 150, 171);
+ellipse(1300,350,40);
+
+// Instructions
+fill(255);
+textSize(30);
+text("Catch as many of \n these guys as possible\n before disappearing",950,200);
+
+}
+// Function that allows for the game to start when the mouse is pressed
+function mousePressed(){
+  if (playing === false){
+    playing = true;
+  }
 }

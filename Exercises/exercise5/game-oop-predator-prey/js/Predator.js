@@ -70,10 +70,9 @@ class Predator {
     }
     //
     // Sprint
-    if (keyIsDown(this.sprintKey)){
+    if (keyIsDown(this.sprintKey)) {
       this.speed = 8;
-    }
-    else {
+    } else {
       this.speed = 5;
     }
   }
