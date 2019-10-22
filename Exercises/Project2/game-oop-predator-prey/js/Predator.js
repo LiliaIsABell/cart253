@@ -8,9 +8,9 @@ class Predator {
 
   // constructor
   //
-  // Sets the initial values for the Predator's properties
-  // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, fillColor, radius) {
+  // Arguments
+  // position, speed, color, radius, image
+  constructor(x, y, speed, fillColor, radius, image) {
     // Position
     this.x = x;
     this.y = y;
@@ -26,6 +26,10 @@ class Predator {
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
+
+    // Added value for image
+    this.image = image;
+
     // Input properties
     this.upKey = UP_ARROW;
     this.downKey = DOWN_ARROW;
@@ -41,21 +45,17 @@ class Predator {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -84,15 +84,13 @@ class Predator {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
@@ -128,7 +126,11 @@ class Predator {
     noStroke();
     fill(this.fillColor);
     this.radius = this.health;
-    ellipse(this.x, this.y, this.radius * 2);
+
+    // Instead of ellipse there is now image
+    // This will allow the image to appear
+    image(this.image, this.x, this.y, this.radius * 2, this.radius * 2);
+
     pop();
   }
 }
