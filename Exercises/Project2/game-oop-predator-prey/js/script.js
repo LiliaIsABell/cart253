@@ -18,11 +18,16 @@ let bee;
 // The background image
 let carpet
 
-// Added function preload
-function preload(){
+// The prey image
+let dustbunny
 
-// Loading carpet image
+// Added function preload
+function preload() {
+
+  // Loading carpet image
   carpet = loadImage("assets/images/carpet.jpg");
+  // Loading dust bunny image
+  dustbunny = loadImage("assets/images/dustbunny.png");
 
 }
 // setup()
@@ -32,16 +37,17 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
-  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
+  // The preys have a variable for the image
+  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50, dustbunny);
+  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60, dustbunny);
+  bee = new Prey(100, 100, 20, color(255, 255, 0), 10, dustbunny);
 }
 
 // draw()
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  
+
   // The background is an image of a carpet
   background(carpet);
 
