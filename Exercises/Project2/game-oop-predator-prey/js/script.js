@@ -24,6 +24,9 @@ let dustbunny;
 // The predator image
 let vaccum;
 
+// Variable for when the game is not active
+let playing = false;
+
 // Added function preload
 function preload() {
 
@@ -40,7 +43,7 @@ function preload() {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // The predator has a variable for the image 
+  // The predator has a variable for the image
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40, vaccum);
   // The preys have a variable for the image
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50, dustbunny);
@@ -52,6 +55,14 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
+
+// When the game is not playing, there will be a title screen
+if (playing === false){
+// Declared function for title screen
+titleScreen();
+}
+// When the game is playing, everything will be displayed
+else {
 
   // The background is an image of a carpet
   background(carpet);
@@ -75,4 +86,25 @@ function draw() {
   antelope.display();
   zebra.display();
   bee.display();
+}
+}
+
+// Title screen fuction
+function titleScreen(){
+// The background is carpet
+background(carpet);
+// Brown title
+fill(99,55,55);
+textFont("Forte");
+textAlign(CENTER,TOP);
+textSize(80);
+text("Dust Bunnies!",windowWidth/2,windowHeight/18);
+
+}
+
+// When the mouse is clicked, the game will start
+function mouseClicked(){
+  if (playing === false){
+    playing = true;
+  }
 }
