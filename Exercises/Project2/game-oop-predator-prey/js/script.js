@@ -15,6 +15,16 @@ let antelope;
 let zebra;
 let bee;
 
+// The background image
+let carpet
+
+// Added function preload
+function preload(){
+
+// Loading carpet image
+  carpet = loadImage("assets/images/carpet.jpg");
+
+}
 // setup()
 //
 // Sets up a canvas
@@ -31,8 +41,9 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  // Clear the background to black
-  background(0);
+  
+  // The background is an image of a carpet
+  background(carpet);
 
   // Handle input for the tiger
   tiger.handleInput();
