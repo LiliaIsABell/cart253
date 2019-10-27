@@ -5,7 +5,7 @@
 // the screen and consume Prey objects to maintain its health.
 
 /////////////////////
-// ~9 ERRORS IN HERE
+// ~8 ERRORS IN HERE
 /////////////////////
 
 class Predator {
@@ -130,7 +130,9 @@ class Predator {
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-    pish();
+
+    //////////////// FIXED
+    push();
     noStroke();
     fill(this.fillColor);
     this.radius = this.health;
