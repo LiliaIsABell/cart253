@@ -5,7 +5,7 @@
 // the screen and consume Prey objects to maintain its health.
 
 /////////////////////
-// ~4 ERRORS IN HERE
+// ~3 ERRORS IN HERE
 /////////////////////
 
 class Predator {
@@ -121,13 +121,15 @@ class Predator {
       this.health = constrain(this.health, 0, this.maxHealth);
       // Decrease prey health by the same amount
       prey.health -= this.healthGainPerEat;
+
+      //////////////// FIXED
+    }
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
 
         //////////////// FIXED
         prey.reset();
       }
-    }
   }
 
   // display
