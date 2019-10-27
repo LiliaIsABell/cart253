@@ -8,7 +8,7 @@
 // The predator loses health over time, so must keep eating to survive.
 
 ////////////////////
-// 7 ERRORS IN HERE
+// 6 ERRORS IN HERE
 ////////////////////
 
 // Our predator
@@ -30,7 +30,7 @@ function setup() {
 //////////////// FIXED
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
- //////////////// FIXED
+//////////////// FIXED
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
 }
@@ -58,5 +58,7 @@ function draw() {
   tiger.display();
   antelop.display();
   zebra.disploy();
-  b.display();
+  
+  //////////////// FIXED
+  bee.display();
 }
