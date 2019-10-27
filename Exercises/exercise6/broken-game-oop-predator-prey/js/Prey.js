@@ -5,7 +5,7 @@
 // the screen and be consumed by Predator objects.
 
 /////////////////////////
-// ~3 ERRORS IN HERE
+// ~2 ERRORS IN HERE
 /////////////////////////
 
 //////////////// FIXED
@@ -77,7 +77,9 @@ class Prey {
     if (this.y < 0) {
       this.y += height;
     } else if (this.y > height) {
-      this.y -= hight;
+
+      //////////////// FIXED
+      this.y -= height;
     }
   }
 
