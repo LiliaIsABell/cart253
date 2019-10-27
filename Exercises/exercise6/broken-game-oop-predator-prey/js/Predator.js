@@ -5,7 +5,7 @@
 // the screen and consume Prey objects to maintain its health.
 
 /////////////////////
-// ~5 ERRORS IN HERE
+// ~4 ERRORS IN HERE
 /////////////////////
 
 class Predator {
@@ -112,7 +112,8 @@ class Predator {
     // Calculate distance from this predator to the prey
 
     //////////////// FIXED
-    let d = dist(this.x, thisY, prey.x, prey.y);
+    //////////////// FIXED
+    let d = dist(this.x, this.y, prey.x, prey.y);
     // Check if the distance is less than their two radii (an overlap)
     if (d < this.radius + prey.radius) {
       // Increase predator health and constrain it to its possible range
