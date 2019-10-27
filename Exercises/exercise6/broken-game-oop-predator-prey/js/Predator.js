@@ -5,7 +5,7 @@
 // the screen and consume Prey objects to maintain its health.
 
 /////////////////////
-// ~7 ERRORS IN HERE
+// ~6 ERRORS IN HERE
 /////////////////////
 
 class Predator {
@@ -120,7 +120,9 @@ class Predator {
       prey.health -= this.healthGainPerEat;
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
-        prey.rest();
+
+        //////////////// FIXED
+        prey.reset();
       }
     }
   }
@@ -137,7 +139,7 @@ class Predator {
     fill(this.fillColor);
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
-    
+
     //////////////// FIXED
     pop();
   }
