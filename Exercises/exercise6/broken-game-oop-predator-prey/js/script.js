@@ -8,14 +8,16 @@
 // The predator loses health over time, so must keep eating to survive.
 
 ////////////////////
-// 4 ERRORS IN HERE
+// 3 ERRORS IN HERE
 ////////////////////
 
 // Our predator
 let tiger;
 
 // The three prey
-let antelop;
+
+//////////////// FIXED
+let antelope;
 let zebra;
 let bee;
 
