@@ -52,11 +52,9 @@ class Predator {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
@@ -67,8 +65,7 @@ class Predator {
     //////////////// FIXED
     else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -83,7 +80,9 @@ class Predator {
 
     //////////////// FIXED
     this.x += this.vx;
-    this.y = this.vy;
+
+    //////////////// FIXED
+    this.y += this.vy;
     // Update health
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
@@ -99,15 +98,13 @@ class Predator {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
@@ -133,12 +130,12 @@ class Predator {
 
       //////////////// FIXED
     }
-      // Check if the prey died and reset it if so
-      if (prey.health < 0) {
+    // Check if the prey died and reset it if so
+    if (prey.health < 0) {
 
-        //////////////// FIXED
-        prey.reset();
-      }
+      //////////////// FIXED
+      prey.reset();
+    }
   }
 
   // display
