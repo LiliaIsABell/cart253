@@ -24,6 +24,9 @@ let dustbunny;
 // The predator image
 let vaccum;
 
+// The CatMeow font
+let dusty;
+
 // Variable for when the game is not active
 let playing = false;
 
@@ -36,6 +39,8 @@ function preload() {
   dustbunny = loadImage("assets/images/dustbunny.png");
   // Loading vaccum image
   vaccum = loadImage("assets/images/vaccum.png");
+  // Loading CatMeow font
+  dusty = loadFont("assets/fonts/catMeow.ttf");
 }
 // setup()
 //
@@ -91,14 +96,36 @@ else {
 
 // Title screen fuction
 function titleScreen(){
+  push();
 // The background is carpet
 background(carpet);
 // Brown title
-fill(99,55,55);
-textFont("Forte");
+fill(74, 39, 39);
+// The font will be the CatMeow font
+textFont(dusty);
 textAlign(CENTER,TOP);
 textSize(80);
-text("Dust Bunnies!",windowWidth/2,windowHeight/18);
+text("Dust Bunnies",windowWidth/2,windowHeight/18);
+pop();
+
+push();
+// Intro
+fill(74, 39, 39);
+// CatMeow font
+textFont(dusty);
+textAlign(CENTER,TOP);
+textSize(20);
+text("Dust bunnies have cursed your vaccum and are causing mayhem\n\n Vaccum up as many as possible before your vaccum dissapears",
+      windowWidth/2,windowHeight/4);
+
+// Instructions
+// How to Move
+image(vaccum,windowWidth/40,windowHeight/2.5,300,300);
+
+textAlign(CENTER,TOP);
+textSize(20);
+text("Use the arrow keys \n to move your vaccum",windowWidth/3.5,windowHeight/1.7);
+pop();
 
 }
 
