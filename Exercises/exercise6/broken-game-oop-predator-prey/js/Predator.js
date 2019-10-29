@@ -5,7 +5,7 @@
 // the screen and consume Prey objects to maintain its health.
 
 /////////////////////
-// ~1 ERROR IN HERE
+// ~ERRORS IN HERE
 /////////////////////
 
 class Predator {
@@ -16,7 +16,8 @@ class Predator {
   // Either sets default values or uses the arguments provided
 
   //////////////// FIXED
-  construction(x, y, speed, fillColor, radius) {
+  //////////////// FIXED
+  constructor(x, y, speed, fillColor, radius) {
     // Position
     this.x = x;
     this.y = y;
