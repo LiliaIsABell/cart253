@@ -5,7 +5,7 @@
 // the screen and be consumed by Predator objects.
 
 /////////////////////////
-// ~1 ERROR IN HERE
+// ~ ERRORS IN HERE
 /////////////////////////
 
 //////////////// FIXED
@@ -29,7 +29,8 @@ class Prey {
     this.speed = speed;
     // Time properties for noise() function
 
-    this.tx = random(0, 0); // To make x and y noise different
+    //////////////// FIXED
+    this.tx = random(0, 1000); // To make x and y noise different
     this.ty = random(0, 0); // we use random starting values
     // Health properties
     this.maxHealth = radius;
