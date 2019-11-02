@@ -100,5 +100,7 @@ class Prey {
     this.health = this.maxHealth;
     // Default radius
     this.radius = this.health;
+    // Game over is false
+    gameOver = false;
   }
 }

@@ -52,8 +52,8 @@ function setup() {
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 60, vaccum);
   // The preys have a variable for the image
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 160, dustbunny);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 100, dustbunny);
+  zebra = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
+  bee = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
 }
 
 // draw()
@@ -61,77 +61,79 @@ function setup() {
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
 
-// When the game is not playing, there will be a title screen
-if (playing === false){
-// Declared function for title screen
-titleScreen();
-}
-// When the game is playing, everything will be displayed
-else {
+  // When the game is not playing, there will be a title screen
+  if (playing === false) {
+    // Declared function for title screen
+    titleScreen();
+  }
 
-  // The background is an image of a carpet
-  background(carpet);
+  // When the game is playing, everything will be displayed
+  else {
 
-  // Handle input for the tiger
-  tiger.handleInput();
+    // The background is an image of a carpet
+    background(carpet);
 
-  // Move all the "animals"
-  tiger.move();
-  antelope.move();
-  zebra.move();
-  bee.move();
+    // Handle input for the tiger
+    tiger.handleInput();
 
-  // Handle the tiger eating any of the prey
-  tiger.handleEating(antelope);
-  tiger.handleEating(zebra);
-  tiger.handleEating(bee);
+    // Move all the "animals"
+    tiger.move();
+    antelope.move();
+    zebra.move();
+    bee.move();
 
-  // Display all the "animals"
-  tiger.display();
-  antelope.display();
-  zebra.display();
-  bee.display();
-}
+    // Handle the tiger eating any of the prey
+    tiger.handleEating(antelope);
+    tiger.handleEating(zebra);
+    tiger.handleEating(bee);
+
+    // Display all the "animals"
+    tiger.display();
+    antelope.display();
+    zebra.display();
+    bee.display();
+  }
+
 }
 
 // Title screen fuction
-function titleScreen(){
+function titleScreen() {
   push();
-// The background is carpet
-background(carpet);
-// Brown title
-fill(74, 39, 39);
-// The font will be the CatMeow font
-textFont(dusty);
-textAlign(CENTER,TOP);
-textSize(80);
-text("Dust Bunnies",windowWidth/2,windowHeight/18);
-pop();
+  // The background is carpet
+  background(carpet);
+  // Brown title
+  fill(74, 39, 39);
+  // The font will be the CatMeow font
+  textFont(dusty);
+  textAlign(CENTER, TOP);
+  textSize(80);
+  text("Dust Bunnies", windowWidth / 2, windowHeight / 18);
+  pop();
 
-push();
-// Intro
-fill(74, 39, 39);
-// CatMeow font
-textFont(dusty);
-textAlign(CENTER,TOP);
-textSize(20);
-text("Dust bunnies have cursed your vaccum and are causing mayhem\n\n Vaccum up as many as possible before your vaccum dissapears",
-      windowWidth/2,windowHeight/4);
+  push();
+  // Intro
+  fill(74, 39, 39);
+  // CatMeow font
+  textFont(dusty);
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Dust bunnies have cursed your vaccum and are causing mayhem\n\n Vaccum up as many as possible before your vaccum dissapears",
+    windowWidth / 2, windowHeight / 4);
 
-// Instructions
-// How to Move
-image(vaccum,windowWidth/40,windowHeight/2.5,300,300);
+  // Instructions
+  // How to Move
+  image(vaccum, windowWidth / 40, windowHeight / 2.5, 300, 300);
 
-textAlign(CENTER,TOP);
-textSize(20);
-text("Use the arrow keys \n to move your vaccum",windowWidth/3.5,windowHeight/1.7);
-pop();
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Use the arrow keys \n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
+  pop();
 
 }
 
 // When the mouse is clicked, the game will start
-function mouseClicked(){
-  if (playing === false){
+function mouseClicked() {
+  if (playing === false) {
     playing = true;
   }
 }
