@@ -15,6 +15,9 @@ let antelope;
 let zebra;
 let bee;
 
+// The enemy
+let hunter;
+
 // The background image
 let carpet;
 
@@ -23,6 +26,9 @@ let dustbunny;
 
 // The predator image
 let vaccum;
+
+// The enemy image
+let marble;
 
 // The CatMeow font
 let dusty;
@@ -42,6 +48,8 @@ function preload() {
   dustbunny = loadImage("assets/images/dustbunny.png");
   // Loading vaccum image
   vaccum = loadImage("assets/images/vaccum.png");
+  // Loading marble image
+  marble = loadImage("assets/images/marble.png");
   // Loading CatMeow font
   dusty = loadFont("assets/fonts/catMeow.ttf");
 }
@@ -57,6 +65,8 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
+  // Setup for the enemy
+  hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
 }
 
 // draw()
@@ -68,10 +78,10 @@ function draw() {
   if (playing === false) {
     // Declared function for title screen
     titleScreen();
-}
+  }
 
-// When gameOver is false and playing is true,
-// the game will start and the player can play
+  // When gameOver is false and playing is true,
+  // the game will start and the player can play
   else if (gameOver === false && playing === true) {
     // The background is an image of a carpet
     background(carpet);
@@ -84,6 +94,8 @@ function draw() {
     antelope.move();
     zebra.move();
     bee.move();
+    // Move the hunter
+    hunter.move();
 
     // Handle the tiger eating any of the prey
     tiger.handleEating(antelope);
@@ -95,10 +107,14 @@ function draw() {
     antelope.display();
     zebra.display();
     bee.display();
+    // Display the hunter
+    hunter.display();
+    // Reset the hunters position
+    hunter.reset();
   }
 
-// When the game is over, there is an ending screen that appears
-  else if (gameOver===true){
+  // When the game is over, there is an ending screen that appears
+  else if (gameOver === true) {
     endScreen();
   }
 }
@@ -143,11 +159,11 @@ function endScreen() {
 
   background(carpet);
 
-  textAlign(CENTER,TOP);
+  textAlign(CENTER, TOP);
   fill(74, 39, 39);
   textFont(dusty);
   textSize(100);
-  text("GAME OVER", windowWidth/2, windowHeight/3);
+  text("GAME OVER", windowWidth / 2, windowHeight / 3);
 
 
 }
