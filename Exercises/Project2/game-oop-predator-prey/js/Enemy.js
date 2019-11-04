@@ -28,6 +28,21 @@ class Enemy {
 
   }
 
+  handleGameOver(predator){
+
+    let d = dist(this.x, this.y, predator.x, predator.y);
+
+    if (d < (this.radius/2 + predator.radius/2)) {
+
+      gameOver = true;
+    }
+
+
+
+
+
+  }
+
   // The reset function updates the position of
   // the enemies this.x
   reset() {

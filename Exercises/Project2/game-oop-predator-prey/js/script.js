@@ -111,6 +111,8 @@ function draw() {
     hunter.display();
     // Reset the hunters position
     hunter.reset();
+    // Game Over when hunter gets the tiger
+    hunter.handleGameOver(tiger);
   }
 
   // When the game is over, there is an ending screen that appears
