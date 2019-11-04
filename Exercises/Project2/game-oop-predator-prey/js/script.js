@@ -30,6 +30,9 @@ let dusty;
 // Variable for when the game is not active
 let playing = false;
 
+// Variable for when the game is over
+let gameOver = false;
+
 // Added function preload
 function preload() {
 
@@ -65,11 +68,11 @@ function draw() {
   if (playing === false) {
     // Declared function for title screen
     titleScreen();
-  }
+}
 
-  // When the game is playing, everything will be displayed
-  else {
-
+// When gameOver is false and playing is true,
+// the game will start and the player can play
+  else if (gameOver === false && playing === true) {
     // The background is an image of a carpet
     background(carpet);
 
@@ -94,6 +97,10 @@ function draw() {
     bee.display();
   }
 
+// When the game is over, there is an ending screen that appears
+  else if (gameOver===true){
+    endScreen();
+  }
 }
 
 // Title screen fuction
@@ -128,6 +135,20 @@ function titleScreen() {
   textSize(20);
   text("Use the arrow keys \n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
   pop();
+
+}
+
+// Ending screen function
+function endScreen() {
+
+  background(carpet);
+
+  textAlign(CENTER,TOP);
+  fill(74, 39, 39);
+  textFont(dusty);
+  textSize(100);
+  text("GAME OVER", windowWidth/2, windowHeight/3);
+
 
 }
 

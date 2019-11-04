@@ -69,9 +69,8 @@ class Predator {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    // Update health
-    this.health = this.health - this.healthLossPerMove;
-    this.health = constrain(this.health, 0, this.maxHealth);
+    // Declared the handleHealth function
+    this.handleHealth();
     // Handle wrapping
     this.handleWrapping();
   }
@@ -94,6 +93,21 @@ class Predator {
       this.y -= height;
     }
   }
+
+// Added a handleHealth function to
+// make it separate from move()
+  handleHealth(){
+    // The health decreases
+    this.health = this.health - this.healthLossPerMove;
+    this.health = constrain(this.health, 0, this.maxHealth);
+
+    // If the health reaches 0, the game will end
+    if (this.health === 0){
+      gameOver = true;
+    }
+    
+  }
+
 
   // handleEating
   //
