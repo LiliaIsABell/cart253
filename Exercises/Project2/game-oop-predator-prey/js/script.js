@@ -15,8 +15,9 @@ let antelope;
 let zebra;
 let bee;
 
-// The enemy
+// The enemies
 let hunter;
+let tourist
 
 // The background image
 let carpet;
@@ -65,8 +66,10 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
-  // Setup for the enemy
+  // Setup for the enemies
   hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
+  tourist = new Enemy(windowWidth/4, 0, 5, 20, marble);
+
 }
 
 // draw()
@@ -94,8 +97,10 @@ function draw() {
     antelope.move();
     zebra.move();
     bee.move();
-    // Move the hunter
+    // Move the humans
     hunter.move();
+    tourist.move();
+
 
     // Handle the tiger eating any of the prey
     tiger.handleEating(antelope);
@@ -107,12 +112,17 @@ function draw() {
     antelope.display();
     zebra.display();
     bee.display();
-    // Display the hunter
+    // Display the humans
     hunter.display();
-    // Reset the hunters position
+    tourist.display();
+
+    // Reset the humans position
     hunter.reset();
-    // Game Over when hunter gets the tiger
+    tourist.reset();
+
+    // Game Over when humans gets the tiger
     hunter.handleGameOver(tiger);
+    tourist.handleGameOver(tiger);
   }
 
   // When the game is over, there is an ending screen that appears
