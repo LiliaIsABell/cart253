@@ -69,7 +69,6 @@ function setup() {
   // Setup for the enemies
   hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
   tourist = new Enemy(windowWidth/4, 0, 5, 20, marble);
-
 }
 
 // draw()

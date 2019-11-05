@@ -8,7 +8,7 @@
 class Enemy {
 
   // The enemy has a constructor that determines it's
-  // Position, speed, color, radius and image
+  // Position, speed, radius and image
   constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
