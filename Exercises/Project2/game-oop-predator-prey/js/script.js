@@ -61,7 +61,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // The predator has a variable for the image
-  tiger = new Predator(100, 100, 5, color(200, 200, 0), 60, vaccum);
+  tiger = new Predator(100, 100, 5, color(74, 39, 39), 60, vaccum,0);
   // The preys have a variable for the image
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);

@@ -10,7 +10,7 @@ class Predator {
   //
   // Arguments
   // position, speed, color, radius, image
-  constructor(x, y, speed, fillColor, radius, image) {
+  constructor(x, y, speed, fillColor, radius, image, score) {
     // Position
     this.x = x;
     this.y = y;
@@ -26,6 +26,10 @@ class Predator {
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
+
+
+    // Preys eaten
+    this.preysEaten = score;
 
     // Added value for image
     this.image = image;
@@ -94,18 +98,18 @@ class Predator {
     }
   }
 
-// Added a handleHealth function to
-// make it separate from move()
-  handleHealth(){
+  // Added a handleHealth function to
+  // make it separate from move()
+  handleHealth() {
     // The health decreases
     this.health = this.health - this.healthLossPerMove;
     this.health = constrain(this.health, 0, this.maxHealth);
 
     // If the health reaches 0, the game will end
-    if (this.health === 0){
+    if (this.health === 0) {
       gameOver = true;
     }
-    
+
   }
 
 
@@ -127,27 +131,26 @@ class Predator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+      // Preys eaten get counted
+        this.preysEaten += 1;
       }
     }
   }
-
   // display
   //
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-    if (this.health === 0){
+    if (this.health === 0) {
       return;
     }
     push();
     noStroke();
     fill(this.fillColor);
     this.radius = this.health;
-
     // Instead of ellipse there is now image
     // This will allow the image to appear
     image(this.image, this.x, this.y, this.radius * 2, this.radius * 2);
-
     pop();
   }
 }
