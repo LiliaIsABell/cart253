@@ -142,6 +142,8 @@ function titleScreen() {
   textAlign(CENTER, TOP);
   textSize(80);
   text("Dust Bunnies", windowWidth / 2, windowHeight / 18);
+  textSize(40);
+  text("Click the Mouse to Play",windowWidth/2,650);
   pop();
 
   push();
@@ -155,14 +157,21 @@ function titleScreen() {
     windowWidth / 2, windowHeight / 4);
 
   // Instructions
+  //
   // How to Move
   image(vaccum, windowWidth / 40, windowHeight / 2.5, 300, 300);
 
   textAlign(CENTER, TOP);
   textSize(20);
-  text("Use the arrow keys \n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
-  pop();
+  text("Use the arrow keys \n\n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
 
+  // Warnings
+  image(marble,1205,windowHeight / 2.5, 50, 50);
+
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Avoid the green marbles \n Or Game Over",1230,370);
+  pop();
 }
 
 // Ending screen function
