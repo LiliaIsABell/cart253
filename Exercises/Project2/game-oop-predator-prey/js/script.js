@@ -10,10 +10,8 @@
 // Our predator
 let tiger;
 
-// The three prey
-let antelope;
-let zebra;
-let bee;
+// Created Array for the Prey
+let dustBunnies = [1,2,3]
 
 // The enemies
 let hunter;
@@ -66,9 +64,9 @@ function setup() {
   // The predator has a variable for the image
   tiger = new Predator(100, 100, 5, color(74, 39, 39), 60, vaccum,0);
   // The preys have a variable for the image
-  antelope = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
+  dustBunnies[0] = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
+  dustBunnies[1] = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
+  dustBunnies[2] = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
   // Setup for the enemies
   hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
   tourist = new Enemy(windowWidth/4, 0, 5, 20, marble);
@@ -98,9 +96,9 @@ function draw() {
 
     // Move all the "animals"
     tiger.move();
-    antelope.move();
-    zebra.move();
-    bee.move();
+    dustBunnies[0].move();
+    dustBunnies[1].move();
+    dustBunnies[2].move();
     // Move the humans
     hunter.move();
     tourist.move();
@@ -109,22 +107,22 @@ function draw() {
 
 
     // Handle the tiger eating any of the prey
-    tiger.handleEating(antelope);
-    tiger.handleEating(zebra);
-    tiger.handleEating(bee);
+    tiger.handleEating(dustBunnies[0]);
+    tiger.handleEating(dustBunnies[1]);
+    tiger.handleEating(dustBunnies[2]);
 
     // Handle the absorbtion of the power up
-    powerUp.handleAbsorb(tiger, antelope);
-    powerUp.handleAbsorb(tiger, zebra);
-    powerUp.handleAbsorb(tiger, bee);
+    powerUp.handleAbsorb(tiger, dustBunnies[0]);
+    powerUp.handleAbsorb(tiger, dustBunnies[1]);
+    powerUp.handleAbsorb(tiger, dustBunnies[2]);
 
 
 
     // Display all the "animals"
     tiger.display();
-    antelope.display();
-    zebra.display();
-    bee.display();
+    dustBunnies[0].display();
+    dustBunnies[1].display();
+    dustBunnies[2].display();
     // Display the humans
     hunter.display();
     tourist.display();
