@@ -40,8 +40,8 @@ class Powerup {
     this.y = height * noise(this.ty);
 
     // Update time properties
-    this.tx += 0.01;
-    this.ty += 0.01;
+    this.tx += 0.1;
+    this.ty += 0.1;
 
   }
 
@@ -63,19 +63,10 @@ class Powerup {
   }
 
 
-  //
-  // reset() {
-  //
-  //
-  //
-  //
-  //
-  //
-  // }
 
 
   display() {
-    // If it is not alive, it will not appear 
+    // If it is not alive, it will not appear
     if (!this.isAlive) {
       return;
     }

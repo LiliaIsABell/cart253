@@ -58,10 +58,10 @@ function setup() {
   dustBunnies[1] = new Prey(100, 100, 8, color(255, 255, 255), 100, images[1]);
   dustBunnies[2] = new Prey(100, 100, 20, color(255, 255, 0), 40, images[1]);
   // Setup for the enemies
-  marbles[0] = new Enemy(windowWidth / 2, 0, 5, 20, images[3]);
-  marbles[1] = new Enemy(windowWidth / 4, 0, 5, 20, images[3]);
+  marbles[0] = new Enemy(windowWidth / 2, -40, 5, 20, images[3]);
+  marbles[1] = new Enemy(windowWidth / 4, -80, 5, 20, images[3]);
   // Setup the power up
-  powerUp = new Powerup(windowWidth, windowHeight / 2, 10, 40, color(3, 252, 94), color(3, 73, 252, 200), 20);
+  powerUp = new Powerup(windowWidth, windowHeight / 2, 30, 10, color(3, 252, 94), color(3, 73, 252, 110), 5);
 }
 
 // draw()
