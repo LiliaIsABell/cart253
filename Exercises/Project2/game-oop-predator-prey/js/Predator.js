@@ -133,6 +133,7 @@ class Predator {
         prey.reset();
       // Preys eaten get counted
         this.preysEaten += 1;
+        console.log(this.preysEaten);
       }
     }
   }

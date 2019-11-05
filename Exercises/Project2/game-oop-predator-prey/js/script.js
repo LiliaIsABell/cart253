@@ -19,6 +19,9 @@ let bee;
 let hunter;
 let tourist
 
+// The power up
+let powerUp;
+
 // The background image
 let carpet;
 
@@ -69,6 +72,8 @@ function setup() {
   // Setup for the enemies
   hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
   tourist = new Enemy(windowWidth/4, 0, 5, 20, marble);
+  // Setup the power up
+  powerUp = new Powerup(windowWidth, windowHeight/2, 10, 40, color(3, 252, 94), color(3, 73, 252), 20);
 }
 
 // draw()
@@ -99,12 +104,21 @@ function draw() {
     // Move the humans
     hunter.move();
     tourist.move();
+    // Move power up
+    powerUp.move();
 
 
     // Handle the tiger eating any of the prey
     tiger.handleEating(antelope);
     tiger.handleEating(zebra);
     tiger.handleEating(bee);
+
+    // Handle the absorbtion of the power up
+    powerUp.handleAbsorb(tiger, antelope);
+    powerUp.handleAbsorb(tiger, zebra);
+    powerUp.handleAbsorb(tiger, bee);
+
+
 
     // Display all the "animals"
     tiger.display();
@@ -114,6 +128,8 @@ function draw() {
     // Display the humans
     hunter.display();
     tourist.display();
+    // Display power up
+    powerUp.display();
 
     // Reset the humans position
     hunter.reset();

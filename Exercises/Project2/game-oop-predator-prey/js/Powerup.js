@@ -8,7 +8,7 @@ class Powerup {
 
   // The power up has a constructor that determines it's
   // Position, speed, color, radius and image
-  constructor(x, y, speed, radius, color, stroke) {
+  constructor(x, y, speed, radius, color, stroke, strokeWeight) {
     // Position
     this.x = x;
     this.y = y;
@@ -24,43 +24,53 @@ class Powerup {
     // Colors
     this.fillColor = color;
     this.strokeColor = stroke;
+    this.strokeWeight = strokeWeight;
   }
 
 
   move() {
-    // Set velocity via noise()
-    this.vx = map(noise(this.tx), 0, 1, -this.speed, this.speed);
-    this.vy = map(noise(this.ty), 0, 1, -this.speed, this.speed);
-    // Update position
-    this.x += this.vx;
-    this.y += this.vy;
+
+    this.x = width*noise(this.tx);
+    this.y = height*noise(this.ty);
+
     // Update time properties
     this.tx += 0.01;
     this.ty += 0.01;
 
   }
 
+  handleAbsorb(predator,prey) {
+    let d = dist(this.x, this.y, predator.x, predator.y);
 
-
-
-
-  reset() {
-
-
-
-
-
+    if (d < this.radius + predator.radius) {
+      predator.speed = predator.speed + 2;
 
   }
+  else if (prey.health === 0){
+    predator.speed = predator.speed;
+  }
+
+}
+
+
+  // 
+  // reset() {
+  //
+  //
+  //
+  //
+  //
+  //
+  // }
 
 
   display() {
     // Appearance of the power up
     push();
     stroke(this.strokeColor);
-    strokeWeight(20);
+    strokeWeight(this.strokeWeight);
     fill(this.fillColor);
-    ellipse(this.x, this.y, this.radius*2)
+    ellipse(this.x, this.y, this.radius*2);
     pop();
 
 
