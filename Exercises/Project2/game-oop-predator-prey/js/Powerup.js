@@ -25,13 +25,19 @@ class Powerup {
     this.fillColor = color;
     this.strokeColor = stroke;
     this.strokeWeight = strokeWeight;
+    // isAlive will determine if they power up will appear or not
+    this.isAlive = true;
   }
 
 
   move() {
+    // If it is not alive, it will not appear
+    if (!this.isAlive) {
+      return;
+    }
 
-    this.x = width*noise(this.tx);
-    this.y = height*noise(this.ty);
+    this.x = width * noise(this.tx);
+    this.y = height * noise(this.ty);
 
     // Update time properties
     this.tx += 0.01;
@@ -39,21 +45,25 @@ class Powerup {
 
   }
 
-  handleAbsorb(predator,prey) {
+  handleAbsorb(predator) {
+    // If it is not alive, it will not appear
+    if (!this.isAlive) {
+      return;
+    }
+    // When the player overlaps the power up, the player will accelarate
     let d = dist(this.x, this.y, predator.x, predator.y);
 
     if (d < this.radius + predator.radius) {
       predator.speed = predator.speed + 2;
+      // After being absorbed, the power up will not reappear
+      this.isAlive = false;
+
+    }
 
   }
-  else if (prey.health === 0){
-    predator.speed = predator.speed;
-  }
-
-}
 
 
-  // 
+  //
   // reset() {
   //
   //
@@ -65,12 +75,17 @@ class Powerup {
 
 
   display() {
+    // If it is not alive, it will not appear 
+    if (!this.isAlive) {
+      return;
+    }
+
     // Appearance of the power up
     push();
     stroke(this.strokeColor);
     strokeWeight(this.strokeWeight);
     fill(this.fillColor);
-    ellipse(this.x, this.y, this.radius*2);
+    ellipse(this.x, this.y, this.radius * 2);
     pop();
 
 

@@ -28,11 +28,11 @@ class Enemy {
 
   }
 
-  handleGameOver(predator){
+  handleGameOver(predator) {
 
     let d = dist(this.x, this.y, predator.x, predator.y);
 
-    if (d < (this.radius/2 + predator.radius/2)) {
+    if (d < (this.radius / 2 + predator.radius / 2)) {
 
       gameOver = true;
     }
@@ -45,10 +45,13 @@ class Enemy {
 
   // The reset function updates the position of
   // the enemies this.x
-  reset() {
+  reset(points) {
     // If the enemy leaves exits from the bottom of the window,
     // then it will be brought back to the top in a random position
-    if (this.y > height) {
+    // And
+    // If the player scores over 5 points
+    // the marbles will start falling
+    if (this.y > height && points > 5) {
       this.x = random(0, width);
       this.y = 0;
     }

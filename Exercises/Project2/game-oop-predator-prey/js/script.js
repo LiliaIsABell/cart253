@@ -61,7 +61,7 @@ function setup() {
   marbles[0] = new Enemy(windowWidth / 2, 0, 5, 20, images[3]);
   marbles[1] = new Enemy(windowWidth / 4, 0, 5, 20, images[3]);
   // Setup the power up
-  powerUp = new Powerup(windowWidth, windowHeight / 2, 10, 40, color(3, 252, 94), color(3, 73, 252), 20);
+  powerUp = new Powerup(windowWidth, windowHeight / 2, 10, 40, color(3, 252, 94), color(3, 73, 252, 200), 20);
 }
 
 // draw()
@@ -102,11 +102,7 @@ function draw() {
     tiger.handleEating(dustBunnies[2]);
 
     // Handle the absorbtion of the power up
-    powerUp.handleAbsorb(tiger, dustBunnies[0]);
-    powerUp.handleAbsorb(tiger, dustBunnies[1]);
-    powerUp.handleAbsorb(tiger, dustBunnies[2]);
-
-
+    powerUp.handleAbsorb(tiger);
 
     // Display all the "animals"
     tiger.display();
@@ -120,8 +116,11 @@ function draw() {
     powerUp.display();
 
     // Reset the Enemies position
-    marbles[0].reset();
-    marbles[1].reset();
+    // Also, by putting tiger.preysEaten in the
+    // parantheses, the marbles will only drop
+    // when the player scores over 5 points
+    marbles[0].reset(tiger.preysEaten);
+    marbles[1].reset(tiger.preysEaten);
 
     // Game Over when Enemies gets the tiger
     marbles[0].handleGameOver(tiger);
