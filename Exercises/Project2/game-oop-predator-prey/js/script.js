@@ -10,12 +10,11 @@
 // Our predator
 let tiger;
 
-// Created Array for the Prey
-let dustBunnies = [1,2,3]
+// Array for the Preys
+let dustBunnies = [1, 2, 3];
 
-// The enemies
-let hunter;
-let tourist
+// Array for the Enemies
+let marbles = [1, 2];
 
 // The power up
 let powerUp;
@@ -62,16 +61,16 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // The predator has a variable for the image
-  tiger = new Predator(100, 100, 5, color(74, 39, 39), 60, vaccum,0);
+  tiger = new Predator(100, 100, 5, color(74, 39, 39), 60, vaccum, 0);
   // The preys have a variable for the image
   dustBunnies[0] = new Prey(100, 100, 10, color(255, 100, 10), 60, dustbunny);
   dustBunnies[1] = new Prey(100, 100, 8, color(255, 255, 255), 100, dustbunny);
   dustBunnies[2] = new Prey(100, 100, 20, color(255, 255, 0), 40, dustbunny);
   // Setup for the enemies
-  hunter = new Enemy(windowWidth/2, 0, 5, 20, marble);
-  tourist = new Enemy(windowWidth/4, 0, 5, 20, marble);
+  marbles[0] = new Enemy(windowWidth / 2, 0, 5, 20, marble);
+  marbles[1] = new Enemy(windowWidth / 4, 0, 5, 20, marble);
   // Setup the power up
-  powerUp = new Powerup(windowWidth, windowHeight/2, 10, 40, color(3, 252, 94), color(3, 73, 252), 20);
+  powerUp = new Powerup(windowWidth, windowHeight / 2, 10, 40, color(3, 252, 94), color(3, 73, 252), 20);
 }
 
 // draw()
@@ -99,9 +98,9 @@ function draw() {
     dustBunnies[0].move();
     dustBunnies[1].move();
     dustBunnies[2].move();
-    // Move the humans
-    hunter.move();
-    tourist.move();
+    // Move the Enemies
+    marbles[0].move();
+    marbles[1].move();
     // Move power up
     powerUp.move();
 
@@ -123,19 +122,19 @@ function draw() {
     dustBunnies[0].display();
     dustBunnies[1].display();
     dustBunnies[2].display();
-    // Display the humans
-    hunter.display();
-    tourist.display();
+    // Display the Enemies
+    marbles[0].display();
+    marbles[1].display();
     // Display power up
     powerUp.display();
 
-    // Reset the humans position
-    hunter.reset();
-    tourist.reset();
+    // Reset the Enemies position
+    marbles[0].reset();
+    marbles[1].reset();
 
-    // Game Over when humans gets the tiger
-    hunter.handleGameOver(tiger);
-    tourist.handleGameOver(tiger);
+    // Game Over when Enemies gets the tiger
+    marbles[0].handleGameOver(tiger);
+    marbles[1].handleGameOver(tiger);
   }
 
   // When the game is over, there is an ending screen that appears
@@ -157,7 +156,7 @@ function titleScreen() {
   textSize(80);
   text("Dust Bunnies", windowWidth / 2, windowHeight / 18);
   textSize(40);
-  text("Click the Mouse to Play",windowWidth/2,650);
+  text("Click the Mouse to Play", windowWidth / 2, 650);
   pop();
 
   push();
@@ -180,11 +179,11 @@ function titleScreen() {
   text("Use the arrow keys \n\n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
 
   // Warnings
-  image(marble,1205,windowHeight / 2.5, 50, 50);
+  image(marble, 1205, windowHeight / 2.5, 50, 50);
 
   textAlign(CENTER, TOP);
   textSize(20);
-  text("Avoid the green marbles \n Or Game Over",1230,370);
+  text("Avoid the green marbles \n Or Game Over", 1230, 370);
   pop();
 }
 
