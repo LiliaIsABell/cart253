@@ -46,7 +46,7 @@ function preload() {
   // Loading marble image
   images[3] = loadImage("assets/images/marble.png");
   // Loading CatMeow font
-  dusty = loadFont("assets/fonts/catMeow.ttf");
+  dusty = loadFont("assets/fonts/CatMeow.ttf");
 }
 // setup()
 //
