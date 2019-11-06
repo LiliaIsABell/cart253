@@ -9,8 +9,8 @@ class Prey {
   // constructor
   //
   // Arguments
-  // position, speed, color, radius and image
-  constructor(x, y, speed, fillColor, radius, image) {
+  // position, speed, radius and image
+  constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
     this.y = y;
@@ -25,7 +25,6 @@ class Prey {
     this.maxHealth = radius;
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     // Display properties
-    this.fillColor = fillColor;
     this.radius = this.health;
     // Added value for the image
     this.image = image;
@@ -73,12 +72,11 @@ class Prey {
   // Draw the prey as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-    if (this.health === 0){
+    if (this.health === 0) {
       return;
     }
     push();
     noStroke();
-    fill(this.fillColor);
     this.radius = this.health;
 
     // Instead of ellipse there is now image

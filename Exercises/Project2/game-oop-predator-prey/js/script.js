@@ -6,9 +6,12 @@
 // Creates a predator and three prey (of different sizes and speeds)
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
+// When the predator come in contact with an enemy, the game will end.
+// With the consumption of a powerup, the predator will move faster.
+
 
 // Our predator
-let tiger;
+let vaccumCleaner;
 
 // Array for the Preys
 let dustBunnies = [1, 2, 3];
@@ -48,20 +51,20 @@ function preload() {
 // setup()
 //
 // Sets up a canvas
-// Creates objects for the predator and three prey
+// Creates objects for the predator, preys, enemies and powerup
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // The predator has a variable for the image
-  tiger = new Predator(100, 100, 5, color(74, 39, 39), 60, images[2], 0);
-  // The preys have a variable for the image
-  dustBunnies[0] = new Prey(100, 100, 10, color(255, 100, 10), 60, images[1]);
-  dustBunnies[1] = new Prey(100, 100, 8, color(255, 255, 255), 100, images[1]);
-  dustBunnies[2] = new Prey(100, 100, 20, color(255, 255, 0), 40, images[1]);
-  // Setup for the enemies
+  // Setup predator
+  vaccumCleaner = new Predator(100, 100, 5, 60, images[2], 0);
+  // Setup prey
+  dustBunnies[0] = new Prey(windowWidth / 2, windowHeight / 2, 10, 60, images[1]);
+  dustBunnies[1] = new Prey(windowWidth / 2, windowHeight / 2, 8, 100, images[1]);
+  dustBunnies[2] = new Prey(windowWidth / 2, windowHeight / 2, 20, 40, images[1]);
+  // Setup enemy
   marbles[0] = new Enemy(windowWidth / 2, -40, 5, 20, images[3]);
   marbles[1] = new Enemy(windowWidth / 4, -80, 5, 20, images[3]);
-  // Setup the power up
-  powerUp = new Powerup(windowWidth, windowHeight / 2, 30, 10, color(3, 252, 94), color(3, 73, 252, 110), 5);
+  // Setup powerup
+  powerUp = new Powerup(windowWidth, windowHeight / 2, 20, 10, color(3, 252, 94), color(3, 73, 252, 110), 5);
 }
 
 // draw()
@@ -81,50 +84,50 @@ function draw() {
     // The background is an image of a carpet
     background(images[0]);
 
-    // Handle input for the tiger
-    tiger.handleInput();
+    // Handle input for the vaccumCleaner
+    vaccumCleaner.handleInput();
 
-    // Move all the "animals"
-    tiger.move();
+    // Move all the elements
+    vaccumCleaner.move();
     dustBunnies[0].move();
     dustBunnies[1].move();
     dustBunnies[2].move();
     // Move the Enemies
     marbles[0].move();
     marbles[1].move();
-    // Move power up
+    // Move powerup
     powerUp.move();
 
 
-    // Handle the tiger eating any of the prey
-    tiger.handleEating(dustBunnies[0]);
-    tiger.handleEating(dustBunnies[1]);
-    tiger.handleEating(dustBunnies[2]);
+    // Handle the vaccumCleaner eating any of the prey
+    vaccumCleaner.handleEating(dustBunnies[0]);
+    vaccumCleaner.handleEating(dustBunnies[1]);
+    vaccumCleaner.handleEating(dustBunnies[2]);
 
-    // Handle the absorbtion of the power up
-    powerUp.handleAbsorb(tiger);
+    // Handle the absorbtion of the powerup
+    powerUp.handleAbsorb(vaccumCleaner);
 
-    // Display all the "animals"
-    tiger.display();
+    // Display all the elements
+    vaccumCleaner.display();
     dustBunnies[0].display();
     dustBunnies[1].display();
     dustBunnies[2].display();
     // Display the Enemies
     marbles[0].display();
     marbles[1].display();
-    // Display power up
+    // Display powerup
     powerUp.display();
 
     // Reset the Enemies position
-    // Also, by putting tiger.preysEaten in the
+    // Also, by putting vaccumCleaner.preysEaten in the
     // parantheses, the marbles will only drop
     // when the player scores over 5 points
-    marbles[0].reset(tiger.preysEaten);
-    marbles[1].reset(tiger.preysEaten);
+    marbles[0].reset(vaccumCleaner.preysEaten);
+    marbles[1].reset(vaccumCleaner.preysEaten);
 
-    // Game Over when Enemies gets the tiger
-    marbles[0].handleGameOver(tiger);
-    marbles[1].handleGameOver(tiger);
+    // Game Over when Enemies gets the vaccumCleaner
+    marbles[0].handleGameOver(vaccumCleaner);
+    marbles[1].handleGameOver(vaccumCleaner);
   }
 
   // When the game is over, there is an ending screen that appears
@@ -168,12 +171,26 @@ function titleScreen() {
   textSize(20);
   text("Use the arrow keys \n\n to move your vaccum", windowWidth / 3.5, windowHeight / 1.7);
 
-  // Warnings
-  image(images[3], 1205, windowHeight / 2.5, 50, 50);
+  // Warning
+  image(images[3], 1025, windowHeight / 2.5, 50, 50);
 
   textAlign(CENTER, TOP);
   textSize(20);
-  text("Avoid the green marbles \n Or Game Over", 1230, 370);
+  text("Avoid the green marbles \n Or Game Over", 1050, 370);
+
+
+  // Advice
+  //image
+  push();
+  fill(3, 252, 94);
+  strokeWeight(15);
+  stroke(3, 73, 252, 110);
+  ellipse(1230, 500, 30 * 2);
+  pop();
+  //text
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Try catching the energy ball\nfor more speed", 1230, 545);
   pop();
 }
 
@@ -182,11 +199,14 @@ function endScreen() {
 
   background(images[0]);
 
+  stroke(74, 39, 39);
   textAlign(CENTER, TOP);
-  fill(74, 39, 39);
+  fill(255);
   textFont(dusty);
   textSize(100);
-  text("GAME OVER", windowWidth / 2, windowHeight / 3);
+  text("Congrats", windowWidth / 2, windowHeight / 3);
+  textSize(50);
+  text(vaccumCleaner.preysEaten + "    dustbunnies were captured", windowWidth / 2, 500)
 
 
 }

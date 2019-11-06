@@ -27,13 +27,11 @@ class Enemy {
     this.y = this.y + this.vy;
 
   }
-
+  // When the predator overlaps with the enemy, the game will end
   handleGameOver(predator) {
-
+    // Calculate distance
     let d = dist(this.x, this.y, predator.x, predator.y);
-
     if (d < (this.radius / 2 + predator.radius / 2)) {
-
       gameOver = true;
     }
 

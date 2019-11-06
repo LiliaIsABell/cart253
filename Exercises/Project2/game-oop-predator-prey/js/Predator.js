@@ -9,8 +9,8 @@ class Predator {
   // constructor
   //
   // Arguments
-  // position, speed, color, radius, image
-  constructor(x, y, speed, fillColor, radius, image, score) {
+  // position, speed, radius, image
+  constructor(x, y, speed, radius, image, score) {
     // Position
     this.x = x;
     this.y = y;
@@ -24,7 +24,6 @@ class Predator {
     this.healthLossPerMove = 0.1;
     this.healthGainPerEat = 1;
     // Display properties
-    this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
 
 
@@ -147,7 +146,6 @@ class Predator {
     }
     push();
     noStroke();
-    fill(this.fillColor);
     this.radius = this.health;
     // Instead of ellipse there is now image
     // This will allow the image to appear

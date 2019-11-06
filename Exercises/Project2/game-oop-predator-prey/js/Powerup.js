@@ -6,7 +6,7 @@
 
 class Powerup {
 
-  // The power up has a constructor that determines it's
+  // The powerup has a constructor that determines it's
   // Position, speed, color, radius and image
   constructor(x, y, speed, radius, color, stroke, strokeWeight) {
     // Position
@@ -25,7 +25,7 @@ class Powerup {
     this.fillColor = color;
     this.strokeColor = stroke;
     this.strokeWeight = strokeWeight;
-    // isAlive will determine if they power up will appear or not
+    // isAlive will determine if they powerup will appear or not
     this.isAlive = true;
   }
 
@@ -50,12 +50,12 @@ class Powerup {
     if (!this.isAlive) {
       return;
     }
-    // When the player overlaps the power up, the player will accelarate
+    // When the player overlaps the powerup, the player will accelarate
     let d = dist(this.x, this.y, predator.x, predator.y);
 
     if (d < this.radius + predator.radius) {
       predator.speed = predator.speed + 2;
-      // After being absorbed, the power up will not reappear
+      // After being absorbed, the powerup will not reappear
       this.isAlive = false;
 
     }
@@ -71,7 +71,7 @@ class Powerup {
       return;
     }
 
-    // Appearance of the power up
+    // Appearance of the powerup
     push();
     stroke(this.strokeColor);
     strokeWeight(this.strokeWeight);
