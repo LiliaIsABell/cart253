@@ -14,14 +14,20 @@
 //******************************************************************************
 
 
+// Variable for predator
+let humanChild;
+
 // Variable for prey
 let happybits;
-
 
 // Setup
 //
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  // Setup the predator
+  humanChild = new Predator(windowWidth / 2, windowHeight / 2, 10, 60, color(207, 143, 60));
+
   // Setup the prey
   happybits = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
 
@@ -32,9 +38,15 @@ function setup() {
 function draw() {
   // Background is dark purple
   background(49, 0, 87);
-  // Move Prey
+  // Handle input
+  humanChild.handleInput();
+  // Move
+  humanChild.move()
   happybits.move();
-  // Display Prey
+  // Handle eating
+  humanChild.handleEating(happybits);
+  // Display
+  humanChild.display();
   happybits.display();
 
 }
