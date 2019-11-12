@@ -83,7 +83,9 @@ class Predator {
       this.preyEaten += 1;
       // and it's speed will increase
       this.speed += 0.25;
-
+      // prey will reset
+      prey.reset();
+      
     }
 
   }

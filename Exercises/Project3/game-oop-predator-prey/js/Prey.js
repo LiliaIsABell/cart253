@@ -18,7 +18,7 @@ class Prey {
     // Timer (Used for moving the prey)
     this.startTime = millis();
     this.timePast = 0;
-    this.timeInterval = 5000;
+    this.timeInterval = 500;
   }
 
   // Move
@@ -26,8 +26,8 @@ class Prey {
   move() {
     // The prey's timer will start when the prey is displayed
     this.timePast = millis() - this.startTime;
-    // When the prey has been put for 5 seconds,
-    // it's position will reset
+    // After an interval of time
+    // the prey's position will reset
     if (this.timePast > this.timeInterval) {
       this.x = random(0, width);
       this.y = random(0, height);
@@ -35,6 +35,14 @@ class Prey {
       this.startTime = millis();
       this.timePast = 0;
     }
+  }
+
+  reset(){
+    // The prey will reset at a random position
+    this.x = random(0,width);
+    this.y = random(0,height);
+    // health will return to normal
+    this.health = this.radius;
   }
 
   // Display

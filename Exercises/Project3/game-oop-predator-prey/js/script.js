@@ -56,5 +56,7 @@ function draw() {
   humanChild.display();
   happybits.display();
   negativityBall.display();
+  // Reset
+  negativityBall.reset();
 
 }
