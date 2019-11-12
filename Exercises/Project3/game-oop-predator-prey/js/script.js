@@ -35,7 +35,7 @@ function setup() {
   happybits = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
 
   // Setup the enemy
-  negativityBall = new Enemy(-50, windowHeight/2, 20, color(100,0,255), color(150,0,200,100), 100);
+  negativityBall = new Enemy(-50, windowHeight/2, 5, color(100,0,255), color(150,0,200,100), 100);
 
 }
 
@@ -49,7 +49,7 @@ function draw() {
   // Move
   humanChild.move()
   happybits.move();
-  negativityBall.move();
+  negativityBall.move(humanChild.preyEaten);
   // Handle eating
   humanChild.handleScore(happybits);
   // Display
@@ -57,6 +57,6 @@ function draw() {
   happybits.display();
   negativityBall.display();
   // Reset
-  negativityBall.reset();
+  negativityBall.reset(humanChild.preyEaten);
 
 }

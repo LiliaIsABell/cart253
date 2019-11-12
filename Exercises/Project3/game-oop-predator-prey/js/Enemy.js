@@ -18,10 +18,13 @@ class Enemy {
 
   // Move
   //
-  move() {
-    // Moves left to right
-    this.x = this.x + this.vx;
-
+  move(points) {
+    // When the predator collects over 5 points,
+    // the enemy will start moving
+    if (points > 5) {
+      // Moves left to right
+      this.x = this.x + this.vx;
+    }
   }
   // Handle Game Over
   //
@@ -32,8 +35,17 @@ class Enemy {
 
   // Reset
   //
-  reset() {
+  reset(points) {
+    // Varible for when the enemy is out of bounds
+    let outOfBounds = this.x < 0 || this.x > width;
+    // If the score is divisible by 5,
+    // a new enemy will appear
+    if (points % 5 === 0 && points > 5 && outOfBounds) {
 
+      this.x = 0;
+      this.y = random(0, height);
+
+    }
   }
 
   // Display

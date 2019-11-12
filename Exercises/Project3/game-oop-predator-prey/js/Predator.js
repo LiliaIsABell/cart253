@@ -85,7 +85,8 @@ class Predator {
       this.speed += 0.25;
       // prey will reset
       prey.reset();
-      
+      console.log(this.preyEaten);
+
     }
 
   }
