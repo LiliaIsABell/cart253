@@ -29,7 +29,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Setup the predator
-  humanChild = new Predator(windowWidth / 2, windowHeight / 2, 10, 60, color(207, 143, 60));
+  humanChild = new Predator(windowWidth / 2, windowHeight / 2, 10, 60, color(207, 143, 60),0);
 
   // Setup the prey
   happybits = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
@@ -51,7 +51,7 @@ function draw() {
   happybits.move();
   negativityBall.move();
   // Handle eating
-  humanChild.handleSpeeding(happybits);
+  humanChild.handleScore(happybits);
   // Display
   humanChild.display();
   happybits.display();

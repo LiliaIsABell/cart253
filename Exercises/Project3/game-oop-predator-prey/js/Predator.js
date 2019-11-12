@@ -4,7 +4,7 @@ class Predator {
 
   // Constructor
   //
-  constructor(x, y, speed, radius, bodyColor) {
+  constructor(x, y, speed, radius, bodyColor,score) {
     // Position
     this.x = x;
     this.y = y;
@@ -20,6 +20,8 @@ class Predator {
     this.downKey = DOWN_ARROW;
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
+    // Score Keeper
+    this.preyEaten = score;
 
   }
 
@@ -72,13 +74,16 @@ class Predator {
 
   // Handle Eating
   //
-  handleSpeeding(prey) {
+  handleScore(prey) {
     // Calculate distance
     let d = dist(this.x, this.y, prey.x, prey.y);
     // If the predator overlaps with the prey,
-    // it's speed will increase
-    if (d < this.radius + prey.radius) {
-      this.speed += 1;
+    if (d < this.radius/2 + prey.radius/2) {
+      // the predator collects a point
+      this.preyEaten += 1;
+      // and it's speed will increase
+      this.speed += 0.25;
+
     }
 
   }
