@@ -20,6 +20,9 @@ let humanChild;
 // Variable for prey
 let happybits;
 
+// Variable for enemy
+let negativityBall;
+
 // Setup
 //
 function setup() {
@@ -30,6 +33,9 @@ function setup() {
 
   // Setup the prey
   happybits = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
+
+  // Setup the enemy
+  negativityBall = new Enemy(-50, windowHeight/2, 20, color(100,0,255), color(150,0,200,100), 100);
 
 }
 
@@ -43,10 +49,12 @@ function draw() {
   // Move
   humanChild.move()
   happybits.move();
+  negativityBall.move();
   // Handle eating
-  humanChild.handleEating(happybits);
+  humanChild.handleSpeeding(happybits);
   // Display
   humanChild.display();
   happybits.display();
+  negativityBall.display();
 
 }

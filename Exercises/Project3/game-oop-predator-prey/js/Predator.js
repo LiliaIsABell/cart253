@@ -72,7 +72,7 @@ class Predator {
 
   // Handle Eating
   //
-  handleEating(prey) {
+  handleSpeeding(prey) {
     // Calculate distance
     let d = dist(this.x, this.y, prey.x, prey.y);
     // If the predator overlaps with the prey,
