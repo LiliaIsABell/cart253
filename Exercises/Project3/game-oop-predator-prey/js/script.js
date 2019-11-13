@@ -17,8 +17,8 @@
 // Variable for predator
 let humanChild;
 
-// Variable for prey
-let happybits;
+// Array for prey
+let happybits = [ 1, 2, 3, 4, 5, 6]
 
 // Variable for enemy
 let negativityBall;
@@ -32,10 +32,15 @@ function setup() {
   humanChild = new Predator(windowWidth / 2, windowHeight / 2, 10, 60, color(207, 143, 60),0);
 
   // Setup the prey
-  happybits = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[1] = new Prey(400, 500, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[2] = new Prey(1300, 1300, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[3] = new Prey(700, 1000, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[4] = new Prey(800, 300, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[5] = new Prey(300, 500, 20, color(255, 0, 0), color(0, 0, 255));
 
   // Setup the enemy
-  negativityBall = new Enemy(-50, windowHeight/2, 5, color(100,0,255), color(150,0,200,100), 100);
+  negativityBall = new Enemy(-500, windowHeight/2, 5, color(100,0,255), color(150,0,200,100), 300);
 
 }
 
@@ -48,13 +53,31 @@ function draw() {
   humanChild.handleInput();
   // Move
   humanChild.move()
-  happybits.move();
+  happybits[0].move();
+  happybits[1].move();
+  happybits[2].move();
+  happybits[3].move();
+  happybits[4].move();
+  happybits[5].move();
+
   negativityBall.move(humanChild.preyEaten);
   // Handle eating
-  humanChild.handleScore(happybits);
+  humanChild.handleScore(happybits[0]);
+  humanChild.handleScore(happybits[1]);
+  humanChild.handleScore(happybits[2]);
+  humanChild.handleScore(happybits[3]);
+  humanChild.handleScore(happybits[4]);
+  humanChild.handleScore(happybits[5]);
+
   // Display
   humanChild.display();
-  happybits.display();
+  happybits[0].display();
+  happybits[1].display();
+  happybits[2].display();
+  happybits[3].display();
+  happybits[4].display();
+  happybits[5].display();
+
   negativityBall.display();
   // Reset
   negativityBall.reset(humanChild.preyEaten);

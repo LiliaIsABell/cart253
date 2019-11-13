@@ -41,9 +41,10 @@ class Enemy {
     // If the score is divisible by 5,
     // a new enemy will appear
     if (points % 5 === 0 && points > 5 && outOfBounds) {
-
       this.x = 0;
       this.y = random(0, height);
+      // and each one will come out bigger in radius than the other
+      this.radius += 10;
 
     }
   }

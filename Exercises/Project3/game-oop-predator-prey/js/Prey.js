@@ -18,7 +18,7 @@ class Prey {
     // Timer (Used for moving the prey)
     this.startTime = millis();
     this.timePast = 0;
-    this.timeInterval = 5000;
+    this.timeInterval = 500;
   }
 
   // Move
