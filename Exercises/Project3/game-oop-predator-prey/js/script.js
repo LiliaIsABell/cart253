@@ -23,6 +23,16 @@ let happybits = [ 1, 2, 3, 4, 5, 6]
 // Variable for enemy
 let negativityBall;
 
+// Variable for background
+let tileFloor;
+
+// Preload
+//
+function preload(){
+
+  tileFloor = loadImage("assets/images/Tilefloor.jpg");
+}
+
 // Setup
 //
 function setup() {
@@ -47,8 +57,8 @@ function setup() {
 // Draw
 //
 function draw() {
-  // Background is dark purple
-  background(49, 0, 87);
+  // Background is an image of a tile floor 
+  background(tileFloor);
   // Handle input
   humanChild.handleInput();
   // Move
