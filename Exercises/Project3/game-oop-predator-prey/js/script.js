@@ -26,6 +26,9 @@ let negativityBall;
 // Variable for background
 let tileFloor;
 
+// Variable for Game Over
+let gameOver = false;
+
 // Preload
 //
 function preload() {
@@ -39,7 +42,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Setup the predator
-  humanChild = new Predator(windowWidth / 2, windowHeight / 2, 60, color(207, 143, 60), 0);
+  humanChild = new Predator(windowWidth / 2, windowHeight / 2, 100, color(207, 143, 60), 0);
 
   // Setup the prey
   happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
@@ -57,6 +60,8 @@ function setup() {
 // Draw
 //
 function draw() {
+
+  if (gameOver === false){
   // Background is an image of a tile floor
   background(tileFloor);
 
@@ -70,8 +75,6 @@ function draw() {
   humanChild.handleScore(happybits[3]);
   humanChild.handleScore(happybits[4]);
   humanChild.handleScore(happybits[5]);
-  //Handle Speed
-  humanChild.handleSpeed(negativityBall);
   // Display
   humanChild.display();
 
@@ -99,5 +102,18 @@ function draw() {
   negativityBall.display();
   // Reset
   negativityBall.reset(humanChild.preyEaten);
+  // Handle Game Over
+  negativityBall.handleGameOver(humanChild);
+}
+else if (gameOver === true){
+  endScreen();
+}
 
+function endScreen(){
+  background(tileFloor);
+
+  textAlign(CENTER,TOP);
+  textSize(100);
+  text("GAME OVER", windowWidth/2, windowHeight/2);
+}
 }

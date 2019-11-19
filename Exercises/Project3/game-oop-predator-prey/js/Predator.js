@@ -11,7 +11,7 @@ class Predator {
     // Velocity and Speed
     this.vx = 0;
     this.vy = 0;
-    this.speed = 10;
+    this.speed = 5;
     // Display
     this.radius = radius;
     this.bodyColor = bodyColor;
@@ -22,7 +22,9 @@ class Predator {
     this.rightKey = RIGHT_ARROW;
     // Score Keeper
     this.preyEaten = score;
-
+    // Variable that determines if
+    // the predator touched the enemy
+    this.touchedByEnemy = 2;
   }
 
   // Handle Input
@@ -87,15 +89,14 @@ class Predator {
       prey.reset();
     }
   }
-  //Handle Speed
-  handleSpeed(enemy) {
-    // Calculate distance
-    let d = dist(this.x, this.y, enemy.x, enemy.y);
-    // If the predator overlaps with the prey,
-    if (d < this.radius / 2 + enemy.radius / 2) {
-      // the predator's speed returns to 10
-      this.speed = 10;
-    }
+  // Reset
+  //
+  reset() {
+    // the predator's position and speed will
+    // reset when touching the enemy
+    this.x = windowWidth
+    this.y = windowHeight / 2;
+    this.speed = 5;
   }
 
   // Display

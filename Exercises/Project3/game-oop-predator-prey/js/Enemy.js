@@ -29,7 +29,21 @@ class Enemy {
   // Handle Game Over
   //
   handleGameOver(predator) {
-
+    // Calculate distance
+    let d = dist(this.x, this.y, predator.x, predator.y);
+    // If the predator overlaps with the prey,
+    if (d < (this.radius / 2 + predator.radius / 2)) {
+      // the touchedByEnemy variable will decrease,
+      predator.touchedByEnemy--;
+      // the predator will reset
+      predator.reset();
+      // if the predator touches the enemy 3 times
+      // making touchedByEnemy reach 0
+      // the game will end
+      if (predator.touchedByEnemy < 0) {
+        gameOver = true;
+      }
+    }
   }
 
 
