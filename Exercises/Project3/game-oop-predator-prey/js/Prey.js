@@ -52,6 +52,7 @@ class Prey {
     push();
     fill(this.bodyColor);
     stroke(this.strokeColor);
+    strokeWeight(20);
     ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
     pop();
   }

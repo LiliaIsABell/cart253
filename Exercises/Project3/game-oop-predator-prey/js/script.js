@@ -26,6 +26,8 @@ let negativityBall;
 // Variable for background
 let tileFloor;
 
+// Variable for Playing
+let playing = false;
 // Variable for Game Over
 let gameOver = false;
 
@@ -45,12 +47,12 @@ function setup() {
   humanChild = new Predator(windowWidth / 2, windowHeight / 2, 100, color(207, 143, 60), 0);
 
   // Setup the prey
-  happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(0, 0, 255));
-  happybits[1] = new Prey(400, 500, 20, color(255, 0, 0), color(0, 0, 255));
-  happybits[2] = new Prey(1300, 1300, 20, color(255, 0, 0), color(0, 0, 255));
-  happybits[3] = new Prey(700, 1000, 20, color(255, 0, 0), color(0, 0, 255));
-  happybits[4] = new Prey(800, 300, 20, color(255, 0, 0), color(0, 0, 255));
-  happybits[5] = new Prey(300, 500, 20, color(255, 0, 0), color(0, 0, 255));
+  happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200));
+  happybits[1] = new Prey(400, 500, 20, color(255, 0, 0), color(252, 115, 93,200));
+  happybits[2] = new Prey(1300, 1300, 20, color(255, 149, 43), color(252, 115, 93,200));
+  happybits[3] = new Prey(700, 1000, 20, color(255, 149, 43), color(252, 115, 93,200));
+  happybits[4] = new Prey(800, 300, 20, color(206, 245, 144), color(252, 115, 93,200));
+  happybits[5] = new Prey(300, 500, 20, color(206, 245, 144), color(252, 115, 93,200));
 
   // Setup the enemy
   negativityBall = new Enemy(-500, windowHeight / 2, 5, color(100, 0, 255), color(150, 0, 200, 100), 300);
@@ -60,8 +62,12 @@ function setup() {
 // Draw
 //
 function draw() {
-
-  if (gameOver === false){
+  // When the game is opened, there will be a title screen
+  if (playing === false){
+    titleScreen();
+  // Game starts
+  }
+  else if (gameOver === false && playing === true){
   // Background is an image of a tile floor
   background(tileFloor);
 
@@ -105,15 +111,40 @@ function draw() {
   // Handle Game Over
   negativityBall.handleGameOver(humanChild);
 }
+// When game ends, an end screen will appear
 else if (gameOver === true){
   endScreen();
 }
 
+// Title Screen
+// Gives the goal of the game and how to start the game
+function titleScreen(){
+  background(62, 12, 89);
+
+  textAlign(CENTER,TOP);
+  fill(58, 76, 153);
+  textSize(50);
+  text("Help Natasha collect happybits to help her be happy!", windowWidth/2, windowHeight/4);
+  text("Press the SPACEBAR to start", windowWidth/2, windowHeight/2);
+
+}
+
+// End Screen
+// Reaveals the amount of happybits collected
 function endScreen(){
   background(tileFloor);
 
   textAlign(CENTER,TOP);
-  textSize(100);
-  text("GAME OVER", windowWidth/2, windowHeight/2);
+  stroke(252, 115, 93,200);
+  strokeWeight(10);
+  fill(255, 149, 43);
+  textSize(50);
+  text("You helped Natasha collect "+ humanChild.preyEaten +" happybits!", windowWidth/2, windowHeight/4);
+  text("But it is not enough to make her happy", windowWidth/2, windowHeight/2);
+}
+
+// When the spacebar is pressed, the game will start
+if (keyIsDown(32)){
+  playing = true;
 }
 }
