@@ -55,33 +55,33 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Setup the predator
-  natasha = new Predator(windowWidth / 2, windowHeight / 2, 100, color(207, 143, 60), 0, eaten);
+  natasha = new Predator(windowWidth / 2, windowHeight / 2, 130, color(207, 143, 60), 0, eaten);
 
   // Setup the prey
-  happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200));
-  happybits[1] = new Prey(400, 500, 20, color(255, 0, 0), color(252, 115, 93,200));
-  happybits[2] = new Prey(1300, 1300, 20, color(255, 149, 43), color(252, 115, 93,200));
-  happybits[3] = new Prey(700, 1000, 20, color(255, 149, 43), color(252, 115, 93,200));
-  happybits[4] = new Prey(800, 300, 20, color(206, 245, 144), color(252, 115, 93,200));
-  happybits[5] = new Prey(300, 500, 20, color(206, 245, 144), color(252, 115, 93,200));
-  happybits[6] = new Prey(300, 300, 20, color(255, 0, 0), color(255, 222, 89,200));
-  happybits[7] = new Prey(400, 500, 20, color(255, 0, 0), color(255, 222, 89,200));
-  happybits[8] = new Prey(1300, 1300, 20, color(255, 149, 43), color(255, 222, 89,200));
-  happybits[9] = new Prey(700, 1000, 20, color(255, 149, 43), color(255, 222, 89,200));
-  happybits[10] = new Prey(800, 300, 20, color(206, 245, 144), color(255, 222, 89,200));
-  happybits[11] = new Prey(300, 500, 20, color(206, 245, 144), color(255, 222, 89,200));
-  happybits[12] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200));
+  happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200), 500);
+  happybits[1] = new Prey(400, 500, 20, color(255, 0, 0), color(252, 115, 93,200), 800);
+  happybits[2] = new Prey(1300, 1300, 20, color(255, 149, 43), color(252, 115, 93,200), 500);
+  happybits[3] = new Prey(700, 1000, 20, color(255, 149, 43), color(252, 115, 93,200), 800);
+  happybits[4] = new Prey(800, 300, 20, color(206, 245, 144), color(252, 115, 93,200), 500);
+  happybits[5] = new Prey(300, 500, 20, color(206, 245, 144), color(252, 115, 93,200), 800);
+  happybits[6] = new Prey(300, 300, 20, color(255, 0, 0), color(255, 222, 89,200), 500);
+  happybits[7] = new Prey(400, 500, 20, color(255, 0, 0), color(255, 222, 89,200), 800);
+  happybits[8] = new Prey(1300, 1300, 20, color(255, 149, 43), color(255, 222, 89,200), 500);
+  happybits[9] = new Prey(700, 1000, 20, color(255, 149, 43), color(255, 222, 89,200), 800);
+  happybits[10] = new Prey(800, 300, 20, color(206, 245, 144), color(255, 222, 89,200),500);
+  happybits[11] = new Prey(300, 500, 20, color(206, 245, 144), color(255, 222, 89,200), 800);
+  happybits[12] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200), 600);
   happybits[13] = new Prey(400, 500, 20, color(255, 0, 0), color(252, 115, 93,200));
-  happybits[14] = new Prey(1300, 1300, 20, color(255, 149, 43), color(252, 115, 93,200));
-  happybits[15] = new Prey(700, 1000, 20, color(255, 149, 43), color(252, 115, 93,200));
-  happybits[16] = new Prey(800, 300, 20, color(206, 245, 144), color(252, 115, 93,200));
-  happybits[17] = new Prey(300, 500, 20, color(206, 245, 144), color(252, 115, 93,200));
-  happybits[18] = new Prey(300, 300, 20, color(255, 0, 0), color(255, 222, 89,200));
-  happybits[19] = new Prey(400, 500, 20, color(255, 0, 0), color(255, 222, 89,200));
-  happybits[20] = new Prey(1300, 1300, 20, color(255, 149, 43), color(255, 222, 89,200));
-  happybits[21] = new Prey(700, 1000, 20, color(255, 149, 43), color(255, 222, 89,200));
-  happybits[22] = new Prey(800, 300, 20, color(206, 245, 144), color(255, 222, 89,200));
-  happybits[23] = new Prey(300, 500, 20, color(206, 245, 144), color(255, 222, 89,200));
+  happybits[14] = new Prey(1300, 1300, 20, color(255, 149, 43), color(252, 115, 93,200), 600);
+  happybits[15] = new Prey(700, 1000, 20, color(255, 149, 43), color(252, 115, 93,200), 900);
+  happybits[16] = new Prey(800, 300, 20, color(206, 245, 144), color(252, 115, 93,200), 600);
+  happybits[17] = new Prey(300, 500, 20, color(206, 245, 144), color(252, 115, 93,200),900);
+  happybits[18] = new Prey(300, 300, 20, color(255, 0, 0), color(255, 222, 89,200), 600);
+  happybits[19] = new Prey(400, 500, 20, color(255, 0, 0), color(255, 222, 89,200),900);
+  happybits[20] = new Prey(1300, 1300, 20, color(255, 149, 43), color(255, 222, 89,200), 600);
+  happybits[21] = new Prey(700, 1000, 20, color(255, 149, 43), color(255, 222, 89,200), 900);
+  happybits[22] = new Prey(800, 300, 20, color(206, 245, 144), color(255, 222, 89,200), 600);
+  happybits[23] = new Prey(300, 500, 20, color(206, 245, 144), color(255, 222, 89,200), 900);
   // Setup the enemy
   negativityBall = new Enemy(-500, windowHeight / 2, 5, 300, badBall);
 
@@ -157,6 +157,31 @@ function draw() {
   happybits[21].move();
   happybits[22].move();
   happybits[23].move();
+  // Shrinking
+  happybits[0].handleShrink();
+  happybits[1].handleShrink();
+  happybits[2].handleShrink();
+  happybits[3].handleShrink();
+  happybits[4].handleShrink();
+  happybits[5].handleShrink();
+  happybits[6].handleShrink();
+  happybits[7].handleShrink();
+  happybits[8].handleShrink();
+  happybits[9].handleShrink();
+  happybits[10].handleShrink();
+  happybits[11].handleShrink();
+  happybits[12].handleShrink();
+  happybits[13].handleShrink();
+  happybits[14].handleShrink();
+  happybits[15].handleShrink();
+  happybits[16].handleShrink();
+  happybits[17].handleShrink();
+  happybits[18].handleShrink();
+  happybits[19].handleShrink();
+  happybits[20].handleShrink();
+  happybits[21].handleShrink();
+  happybits[22].handleShrink();
+  happybits[23].handleShrink();
   // Display
   happybits[0].display();
   happybits[1].display();

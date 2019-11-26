@@ -109,6 +109,7 @@ class Predator {
   display() {
 
     push();
+    noStroke();
     fill(this.bodyColor);
     ellipse(this.x, this.y, this.radius, this.radius);
     pop();

@@ -4,7 +4,7 @@ class Prey {
 
   // Constructor
   //
-  constructor(x, y, radius, bodyColor, strokeColor) {
+  constructor(x, y, radius, bodyColor, strokeColor, time) {
     // Position
     this.x = x;
     this.y = y;
@@ -15,10 +15,11 @@ class Prey {
     // Colors
     this.bodyColor = bodyColor;
     this.strokeColor = strokeColor;
+    this.strokeWeight = 20;
     // Timer (Used for moving the prey)
     this.startTime = millis();
     this.timePast = 0;
-    this.timeInterval = 500;
+    this.timeInterval = time;
   }
 
   // Move
@@ -37,6 +38,19 @@ class Prey {
     }
   }
 
+  // Shrinking
+  //
+  handleShrink(){
+    this.strokeWeight -=1
+
+    if(this.strokeWeight < 5){
+      this.strokeWeight = 20;
+    }
+
+  }
+
+  // Reset
+  //
   reset(){
     // The prey will reset at a random position
     this.x = random(0,width);
@@ -52,7 +66,7 @@ class Prey {
     push();
     fill(this.bodyColor);
     stroke(this.strokeColor);
-    strokeWeight(20);
+    strokeWeight(this.strokeWeight);
     ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
     pop();
   }

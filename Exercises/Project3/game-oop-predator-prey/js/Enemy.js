@@ -66,6 +66,7 @@ class Enemy {
   display() {
 
     push();
+    imageMode(CENTER);
     image(this.image, this.x, this.y, this.radius, this.radius);
     pop();
 
