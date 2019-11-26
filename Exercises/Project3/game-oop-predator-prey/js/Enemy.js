@@ -4,16 +4,15 @@ class Enemy {
 
   // Constructor
   //
-  constructor(x, y, speed, bodyColor, strokeColor, radius) {
+  constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
     this.y = y;
     // Velocity and speed
     this.vx = speed;
     // Display
-    this.bodyColor = bodyColor
-    this.strokeColor = strokeColor
-    this.radius = radius
+    this.radius = radius;
+    this.image = image;
   }
 
   // Move
@@ -67,9 +66,7 @@ class Enemy {
   display() {
 
     push();
-    fill(this.bodyColor);
-    stroke(this.strokeColor);
-    ellipse(this.x, this.y, this.radius, this.radius);
+    image(this.image, this.x, this.y, this.radius, this.radius);
     pop();
 
   }
