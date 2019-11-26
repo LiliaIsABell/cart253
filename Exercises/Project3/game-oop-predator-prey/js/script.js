@@ -5,7 +5,7 @@
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
 
-// THIS WILL BE THE GAMES TITLE
+// Catching Happiness
 // by Lilia Isabel Aguirre Lugo
 // This game has a predator that chases after ther preys, but there is also an
 // enemy that will incovenience the predator. The predator is moves using the
@@ -26,6 +26,9 @@ let negativityBall;
 // Variable for background
 let tileFloor;
 
+// Variable for titleScreen image
+let hallway;
+
 // Variable for Playing
 let playing = false;
 // Variable for Game Over
@@ -34,8 +37,9 @@ let gameOver = false;
 // Preload
 //
 function preload() {
-
+  // loading images
   tileFloor = loadImage("assets/images/Tilefloor.jpg");
+  hallway = loadImage("assets/images/TitleScreen.jpg");
 }
 
 // Setup
@@ -119,13 +123,29 @@ else if (gameOver === true){
 // Title Screen
 // Gives the goal of the game and how to start the game
 function titleScreen(){
-  background(62, 12, 89);
-
+  // Game Title
+  background(hallway);
+  push();
   textAlign(CENTER,TOP);
-  fill(58, 76, 153);
+  fill(255, 222, 89);
+  textSize(80);
+  text("Catching Happiness",windowWidth/2, 50);
+  pop();
+  // Story and Instructions
+  push();
+  textAlign(LEFT,TOP);
+  fill(255, 222, 89);
+  textSize(35);
+  text("Natasha has been feeling\nvery sad for many months\nand hasn't been able make\nherself feel better. Suddenly,\nshe finds these little bright\nflames that make her happy\nwhen she catches them.\nShe calls them happybits.", windowWidth/2.8, 200);
+  text("Using the ARROW keys,\nhelp Natasha collect as many\nhappybits as possible to help\nher achieve happiness. Avoid\nthe negativity balls because\nafter 3 hits, it's game over.",windowWidth/1.5, 245);
+  pop();
+  // Start Game
+  push();
+  textAlign(CENTER,TOP);
+  fill(255, 222, 89);
   textSize(50);
-  text("Help Natasha collect happybits to help her be happy!", windowWidth/2, windowHeight/4);
-  text("Press the SPACEBAR to start", windowWidth/2, windowHeight/2);
+  text("Press the SPACEBAR to start", windowWidth/1.6, windowHeight/1.2);
+  pop();
 
 }
 
