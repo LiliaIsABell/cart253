@@ -59,6 +59,14 @@ class Prey {
     this.health = this.radius;
   }
 
+  // gameOverReset(){
+  //   // The prey will reset at a random position
+  //   this.x = random(0,width);
+  //   this.y = random(0,height);
+  //   // health will return to normal
+  //   this.health = this.radius;
+  // }
+
   // Display
   //
   display() {

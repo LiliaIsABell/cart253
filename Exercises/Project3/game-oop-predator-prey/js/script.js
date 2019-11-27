@@ -30,8 +30,10 @@ let hallway;
 // Variable for negativity ball image
 let badBall;
 
-// Variable for eating sound
+// Variable for when the predator eats the prey
 let eaten;
+// Variable for when the enemy hits the predator
+let hitByBall;
 
 // Variable for Playing
 let playing = false;
@@ -47,6 +49,7 @@ function preload() {
   badBall = loadImage("assets/images/evilball.png");
   // Loading sounds
   eaten = loadSound("assets/sounds/Blop(MOD_1).wav");
+  hitByBall = loadSound("assets/sounds/doom.wav");
 }
 
 // Setup
@@ -55,7 +58,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Setup the predator
-  natasha = new Predator(windowWidth / 2, windowHeight / 2, 130, color(207, 143, 60), 0, eaten);
+  natasha = new Predator(130, color(207, 143, 60), 0, eaten, hitByBall);
 
   // Setup the prey
   happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93,200), 500);
@@ -99,6 +102,9 @@ function draw() {
   // Background is an image of a tile floor
   background(tileFloor);
 
+// resetGame();
+//
+//
   // All of natasha's properties
   // Handle Input and Move
   natasha.handleInput();
@@ -221,7 +227,40 @@ function draw() {
 // When game ends, an end screen will appear
 else if (gameOver === true){
   endScreen();
+  //
+  // checkResetGame();
+  //
+  //
 }
+
+// function resetGame(){
+// natasha.gameOverReset();
+// happybits[0].gameOverReset();
+// happybits[1].gameOverReset();
+// happybits[2].gameOverReset();
+// happybits[3].gameOverReset();
+// happybits[4].gameOverReset();
+// happybits[5].gameOverReset();
+// happybits[6].gameOverReset();
+// happybits[7].gameOverReset();
+// happybits[8].gameOverReset();
+// happybits[9].gameOverReset();
+// happybits[10].gameOverReset();
+// happybits[11].gameOverReset();
+// happybits[12].gameOverReset();
+// happybits[13].gameOverReset();
+// happybits[14].gameOverReset();
+// happybits[15].gameOverReset();
+// happybits[16].gameOverReset();
+// happybits[17].gameOverReset();
+// happybits[18].gameOverReset();
+// happybits[19].gameOverReset();
+// happybits[20].gameOverReset();
+// happybits[21].gameOverReset();
+// happybits[22].gameOverReset();
+// happybits[23].gameOverReset();
+// negativityBall.gameOverReset(natasha.preyEaten);
+// }
 
 // Title Screen
 // Gives the goal of the game and how to start the game
@@ -258,9 +297,7 @@ function endScreen(){
   background(tileFloor);
 
   textAlign(CENTER,TOP);
-  stroke(252, 115, 93,200);
-  strokeWeight(10);
-  fill(255, 149, 43);
+  fill(255, 222, 89);
   textSize(50);
   text("You helped Natasha collect "+ natasha.preyEaten +" happybits!", windowWidth/2, windowHeight/4);
   text("But it is not enough to make her happy", windowWidth/2, windowHeight/2);
@@ -270,4 +307,10 @@ function endScreen(){
 if (keyIsDown(32)){
   playing = true;
 }
+
+// function checkResetGame(){
+//   if (keyIsDown(32)){
+//     resetGame();
+//   }
+// }
 }
