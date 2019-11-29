@@ -62,19 +62,23 @@ class Enemy {
     }
   }
 
-//   gameOverReset(points){
-//     // Varible for when the enemy is out of bounds
-//     let outOfBounds = this.x < 0 || this.x > width;
-//     // If the score is divisible by 5,
-//     // a new enemy will appear
-//     if (points % 5 === 0 && points > 5 && outOfBounds) {
-//       this.x = 0;
-//       this.y = random(0, height);
-//       // and each one will come out bigger in radius than the other
-//       this.radius += 10;
-//
-//   }
-// }
+  // Game Over Reset
+  //
+  gameOverReset(predator) {
+    // When the game reset's, all
+    // of these properties will reset
+    //
+    //Position
+    this.x = -500;
+    this.y = random(0, height);
+    // Velocity and speed
+    this.vx = 5;
+    // Size
+    this.radius = 300;
+    // Predator's chances
+    predator.touchedByEnemy = 2;
+  }
+
 
   // Display
   display() {

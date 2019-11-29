@@ -4,10 +4,10 @@ class Predator {
 
   // Constructor
   //
-  constructor(radius, bodyColor, score, eatSound, hitSound) {
+  constructor(radius, bodyColor, eatSound, hitSound) {
     // Position
-    this.x = windowWidth/2;
-    this.y = windowHeight/2;
+    this.x = windowWidth / 2;
+    this.y = windowHeight / 2;
     // Velocity and Speed
     this.vx = 0;
     this.vy = 0;
@@ -21,7 +21,7 @@ class Predator {
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
     // Score Keeper
-    this.preyEaten = score;
+    this.preyEaten = 0;
     // Variable for the eating sound
     this.eatSound = eatSound;
     // Variable for the hit sound
@@ -105,13 +105,24 @@ class Predator {
     this.speed = 5;
     // and a sound will play
     this.hitSound.play();
+    //
+    // this.hitSound.setVolume(20,10);
+    // 
   }
-
-  // gameOverReset(){
-  //   this.x = windowWidth/2;
-  //   this.y = windowHeight/2;
-  //   this. speed = 5;
-  // }
+  // Game Over Reset
+  //
+  gameOverReset() {
+    // When the game reset's, all
+    // of these properties will reset
+    //
+    //Position
+    this.x = windowWidth / 2;
+    this.y = windowHeight / 2;
+    // Velocity and Speed
+    this.vx = 0;
+    this.vy = 0;
+    this.speed = 5;
+  }
 
   // Display
   //

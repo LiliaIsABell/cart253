@@ -40,10 +40,10 @@ class Prey {
 
   // Shrinking
   //
-  handleShrink(){
-    this.strokeWeight -=1
+  handleShrink() {
+    this.strokeWeight -= 1
 
-    if(this.strokeWeight < 5){
+    if (this.strokeWeight < 5) {
       this.strokeWeight = 20;
     }
 
@@ -51,21 +51,28 @@ class Prey {
 
   // Reset
   //
-  reset(){
+  reset() {
     // The prey will reset at a random position
-    this.x = random(0,width);
-    this.y = random(0,height);
+    this.x = random(0, width);
+    this.y = random(0, height);
     // health will return to normal
     this.health = this.radius;
   }
 
-  // gameOverReset(){
-  //   // The prey will reset at a random position
-  //   this.x = random(0,width);
-  //   this.y = random(0,height);
-  //   // health will return to normal
-  //   this.health = this.radius;
-  // }
+  // Game Over Reset
+  //
+  gameOverReset() {
+    // When the game reset's, all
+    // of these properties will reset
+    //
+    // Position
+    this.x = random(0, width);
+    this.y = random(0, height);
+    // Health
+    this.health = this.radius;
+    // Radius
+    this.radius = 20;
+  }
 
   // Display
   //
