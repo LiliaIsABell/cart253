@@ -105,9 +105,8 @@ class Predator {
     this.speed = 5;
     // and a sound will play
     this.hitSound.play();
-    //
-    // this.hitSound.setVolume(20,10);
-    // 
+    // Amplitude setting
+    this.hitSound.setVolume(10);
   }
   // Game Over Reset
   //

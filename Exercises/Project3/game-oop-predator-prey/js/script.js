@@ -49,7 +49,7 @@ function preload() {
   badBall = loadImage("assets/images/evilball.png");
   // Loading sounds
   eaten = loadSound("assets/sounds/Blop(MOD_1).wav");
-  hitByBall = loadSound("assets/sounds/doom.wav");
+  hitByBall = loadSound("assets/sounds/doom_v2.wav");
 }
 
 // Setup
