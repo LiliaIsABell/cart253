@@ -60,6 +60,7 @@ class Predator {
     this.y += this.vy;
     this.handleBorder();
   }
+
   // Handle border
   handleBorder() {
     // When the player reaches the borders of the screen,
@@ -95,6 +96,7 @@ class Predator {
       this.eatSound.play();
     }
   }
+
   // Reset
   //
   reset() {
@@ -108,6 +110,7 @@ class Predator {
     // Amplitude setting
     this.hitSound.setVolume(10);
   }
+
   // Game Over Reset
   //
   gameOverReset() {

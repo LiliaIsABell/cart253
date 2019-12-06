@@ -7,33 +7,25 @@
 
 // Catching Happiness
 // by Lilia Isabel Aguirre Lugo
-// This game has a predator that chases after ther preys, but there is also an
-// enemy that will incovenience the predator. The predator is moves using the
-// arrow keys, increases in speed when consuming a prey and slows down when
-// interacting with the ennemy.
+// This game has a predator that chases after preys that makes the predator increase
+// in speed, but when ther predator gets hit by the enemy, its speed will reset.
+// The predator moves by using the arrow keys.
+// After hitting the enemy three times, the game is over.
 //******************************************************************************
 
 
 // Variable for predator
 let natasha;
-
 // Array for prey
-let happybits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-
+let happybits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 // Variable for enemy
 let negativityBall;
 
-// Variable for background image
-let tileFloor;
-// Variable for titleScreen image
-let hallway;
-// Variable for negativity ball image
-let badBall;
+// Array for Images
+let loadedImages = ["tileFloor", "hallway", "negativityBall"];
 
-// Variable for when the predator eats the prey
-let eaten;
-// Variable for when the enemy hits the predator
-let hitByBall;
+// Array for Sounds
+let loadedSounds = ["eaten", "hitByBall"];
 
 // Variable for Playing
 let playing = false;
@@ -44,12 +36,12 @@ let gameOver = false;
 //
 function preload() {
   // loading images
-  tileFloor = loadImage("assets/images/Tilefloor.jpg");
-  hallway = loadImage("assets/images/TitleScreen.jpg");
-  badBall = loadImage("assets/images/evilball.png");
+  loadedImages[0] = loadImage("assets/images/Tilefloor.jpg");
+  loadedImages[1] = loadImage("assets/images/TitleScreen.jpg");
+  loadedImages[2] = loadImage("assets/images/evilball.png");
   // Loading sounds
-  eaten = loadSound("assets/sounds/Blop(MOD_1).wav");
-  hitByBall = loadSound("assets/sounds/doom_v2.wav");
+  loadedSounds[0] = loadSound("assets/sounds/Blop(MOD_1).wav");
+  loadedSounds[1] = loadSound("assets/sounds/doom_v2.wav");
 }
 
 // Setup
@@ -58,7 +50,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Setup the predator
-  natasha = new Predator(130, color(207, 143, 60), eaten, hitByBall);
+  natasha = new Predator(130, color(207, 143, 60), loadedSounds[0], loadedSounds[1]);
 
   // Setup the prey
   happybits[0] = new Prey(300, 300, 20, color(255, 0, 0), color(252, 115, 93, 200), 500);
@@ -86,7 +78,7 @@ function setup() {
   happybits[22] = new Prey(800, 300, 20, color(206, 245, 144), color(255, 222, 89, 200), 600);
   happybits[23] = new Prey(300, 500, 20, color(206, 245, 144), color(255, 222, 89, 200), 900);
   // Setup the enemy
-  negativityBall = new Enemy(-500, windowHeight / 2, 5, 300, badBall);
+  negativityBall = new Enemy(-500, windowHeight / 2, 5, 300, loadedImages[2]);
 
 }
 
@@ -101,7 +93,7 @@ function draw() {
     // Game starts
   } else if (gameOver === false && playing === true) {
     // Background is an image of a tile floor
-    background(tileFloor);
+    background(loadedImages[0]);
 
     //
     // All of natasha's properties
@@ -271,7 +263,7 @@ function draw() {
   // Gives the goal of the game and how to start the game
   function titleScreen() {
     // Game Title
-    background(hallway);
+    background(loadedImages[1]);
     push();
     textAlign(CENTER, TOP);
     fill(255, 222, 89);
@@ -300,7 +292,7 @@ function draw() {
   // Reaveals the amount of happybits collected
   // and tells you how to reset the game
   function endScreen() {
-    background(tileFloor);
+    background(loadedImages[0]);
 
     textAlign(CENTER, TOP);
     fill(255, 222, 89);
